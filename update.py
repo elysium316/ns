@@ -24,7 +24,7 @@ html_content = f"""
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Trein: Leiden - Doetinchem</title>
+    <title>Leiden C. - Doetinchem de Huet</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {{ font-family: sans-serif; background: #fff; color: #000; padding: 10px; }}
@@ -38,7 +38,7 @@ html_content = f"""
     </style>
 </head>
 <body>
-    <h1>Leiden Centraal &rarr; Doetinchem</h1>
+    <h1>Leiden C. &rarr; Doetinchem de Huet</h1>
     <div class="tijd">Laatst geüpdatet: {tijd_nu}</div>
     <ul>
 """
