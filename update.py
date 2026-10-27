@@ -67,7 +67,7 @@ html_content += """
 """
 
 # 5. Sla dit op als de HTML pagina die we online gaan zetten
-with open("leiden_doetinchem.html", "w", encoding="utf-8") as f:
+with open("info.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
 print("HTML succesvol gebouwd!")
