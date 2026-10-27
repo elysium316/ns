@@ -1,0 +1,39 @@
+name: Update Treintijden
+
+on:
+  schedule:
+    # Draai dit script elke 15 minuten. (*/5 = 5 min, */15 = 15 min)
+    - cron: '*/15 * * * *' 
+  workflow_dispatch: # Dit maakt een handmatige 'Start' knop in GitHub aan
+
+permissions:
+  contents: write # Dit is nodig zodat de robot het HTML bestand mag opslaan
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Haal de code op
+        uses: actions/checkout@v3
+
+      - name: Zet Python klaar
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Installeer benodigde modules
+        run: pip install requests
+
+      - name: Vraag API op en bouw HTML
+        env:
+          NS_API_KEY: ${{ secrets.NS_API_KEY }}
+        run: python update.py
+
+      - name: Sla de HTML pagina op in de repository
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add leiden_doetinchem.html
+          # Als er niets veranderd is (geen nieuwe treinen), gooit dit geen error
+          git commit -m "Automatische update treintijden" || exit 0
+          git push
