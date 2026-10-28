@@ -44,7 +44,7 @@ html_content = f"""
         .status {{ color: #d00; font-size: 12px; }}
     </style>
 </head>
-<body style="margin:2pt 0 2pt 0;padding:2pt 0 2pt 0;">
+<body style="margin:5pt;padding:5pt;">
     <h1>Leiden C.</h1>
     <h1>Dtc DH</h1>
     <div class="tijd">{tijd_vis}</div>
@@ -65,7 +65,9 @@ for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
     for leg in trip.get('legs', []):
         if leg.get('travelType') == 'PUBLIC_TRANSIT':
             vervoer = leg['product']['shortCategoryName'] # Bijv. IC, SPR of BUS
-            
+            if vervoer == "TRAIN":
+                vervoer = "ST"
+                
             # --- VERTREK INFO ---
             v_station = leg['origin']['name']
             if v_station == "Leiden Centraal":
@@ -76,9 +78,7 @@ for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
                 v_station = "Arnhem C."
             elif v_station == "Doetinchem De Huet":
                 v_station = "Dtc De Huet"
-                
-            v_tijd = leg['origin']['plannedDateTime'][11:16]
-
+            
             # Ophalen spoorinfo
             v_gepland = leg['origin'].get('plannedTrack', '?')
             v_actueel = leg['origin'].get('actualTrack', v_gepland)
@@ -91,7 +91,33 @@ for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
             
             # --- AANKOMST INFO ---
             a_station = leg['destination']['name']
-            a_tijd = leg['destination']['plannedDateTime'][11:16]
+        
+            v_gepland_tijd = leg['origin']['plannedDateTime'][11:16]
+            v_actueel_tijd = leg['origin'].get('actualDateTime', leg['origin']['plannedDateTime'])[11:16]
+            if v_gepland_tijd != v_actueel_tijd:
+                v_tijd = f"<del style='color:green;'>{v_gepland_tijd}</del> <span style='color: red; font-weight: bold;'>{v_actueel_tijd}</span>"
+            else:
+                v_tijd = v_gepland_tijd
+
+            # Spoor (met wijzigings-check)
+            v_gepland_spoor = leg['origin'].get('plannedTrack', '?')
+            v_actueel_spoor = leg['origin'].get('actualTrack', v_gepland_spoor)
+            if v_gepland_spoor != v_actueel_spoor:
+                spoor_tekst = f"<span style='color: red; font-weight: bold;'>{v_actueel_spoor}</span>"
+            else:
+                spoor_tekst = f"<span class='spoor'>{v_actueel_spoor}</span>"
+            
+            # --- AANKOMST INFO ---
+            a_station = leg['destination']['name']
+            a_station = a_station.replace(" Centraal", " C.") # Kort de naam af
+            
+            # Aankomsttijd (met vertragings-check)
+            a_gepland_tijd = leg['destination']['plannedDateTime'][11:16]
+            a_actueel_tijd = leg['destination'].get('actualDateTime', leg['destination']['plannedDateTime'])[11:16]
+            if a_gepland_tijd != a_actueel_tijd:
+                a_tijd = f"<del style='color: #999;'>{a_gepland_tijd}</del> <span style='color: red; font-weight: bold;'>{a_actueel_tijd}</span>"
+            else:
+                a_tijd = a_gepland_tijd
             
             # Voeg dit specifieke ritje toe aan de HTML
             html_content += f"""
