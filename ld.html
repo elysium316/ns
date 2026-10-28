@@ -2,380 +2,224 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Leiden C. - Doetinchem de Huet</title>
+    <title>Route: Leiden - Doetinchem</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body { font-family: sans-serif; background: #fff; color: #000; }
+        body { font-family: sans-serif; background: #fff; color: #000; margin:2pt; padding:2pt; }
         h1 { font-size: 45px; margin: 0; color: #003399; }
         .tijd { font-size: 60px; font-weight:bold; color: black; margin-bottom: 15px; }
         ul { list-style-type: none; padding: 0; margin: 0; }
-        li { padding: 10px 0; border-bottom: 1px solid #ccc; }
+        li { padding: 10px 0; }
         .vertrek { font-weight: bold; font-size: 72px; }
-        .spoor { color: blue; font-weight: bold; font-size:50px;}
-        .status { color: black; font-size: 50px; font-weight: bold}
-        .station {color:black; font-size:33pt; font-weight: bold}
+        .spoor { color: blue; font-weight: bold; font-size: 50px; }
+        .status { color: black; font-size: 50px; font-weight: bold; }
+        .station { color: black; font-size: 33pt; font-weight: bold; }
+        .etappe-header { background: #ffc917; color: #003399; padding: 10px; font-size: 50px; font-weight: bold; margin-top: 30px; margin-bottom: 10px; border-radius: 5px; }
     </style>
 </head>
-<body style="margin:2pt;padding:2pt;">
+<body>
     <h1>Leiden C.</h1>
     <h1>Dtc DH</h1>
-    <div class="tijd">22:12</div>
-    <ul>
+    <div class="tijd">22:51</div>
 
-    <li style="margin-bottom: 10px; border-bottom: 10px solid #003399; padding-bottom: 10px;">
-        <div class="status"><span style='color: red;'>ALTERNATIVE_TRANSPORT</span></div>
-        <ul style="list-style-type: none; padding-left: 0; margin: 0;">
+    <div class="etappe-header">Leiden C. ➔ Utrecht C.</div>
+    <ul style="border-bottom: 10px solid #003399; padding-bottom: 10px; margin-bottom: 20px;">
     
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Leiden C.</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>5b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
-                <span class="vertrek">20:44<span style='color: red; font-weight: bold;'>1</span></span><br>
-                <span class="vertrek">22:00</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Veenendaal-De Klomp, P&R terrein</span><br>
-                <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
-                <span class="vertrek">22:20</span><br>
-                <span class="vertrek">22:53</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Arnhem C.</span><br>
-                <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>9</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
-                <span class="vertrek">23:05</span><br>
-                <span class="vertrek">23:33</span>
-            </li>
-            
-        </ul>
-    </li>
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    
+                    <span class="station">Leiden C.</span><br>
+                    <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>5b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>19</span></span><br>
+                    <span class="vertrek">22:14<span style='color: red; font-weight: bold;'>+1</span></span><br>
+                    <span class="vertrek">23:03</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    
+                    <span class="station">Leiden C.</span><br>
+                    <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>8b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>10</span></span><br>
+                    <span class="vertrek">22:18</span><br>
+                    <span class="vertrek">22:29</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    
+                    <span class="station">Den Haag Centraal</span><br>
+                    <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span style='color: red; font-weight: bold;'>6</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>12</span></span><br>
+                    <span class="vertrek">22:40</span><br>
+                    <span class="vertrek">23:17</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    
+                    <span class="station">Leiden C.</span><br>
+                    <span class="spoor" style="color:black;">SPR: </span><span class="spoor"><span class='spoor'>1</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
+                    <span class="vertrek">22:22</span><br>
+                    <span class="vertrek">22:36<span style='color: red; font-weight: bold;'>+1</span></span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    
+                    <span class="station">Alphen a/d Rijn</span><br>
+                    <span class="spoor" style="color:black;">SPR: </span><span class="spoor"><span class='spoor'>3</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>11</span></span><br>
+                    <span class="vertrek">22:40</span><br>
+                    <span class="vertrek">23:02</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    
+                    <span class="station">Gouda</span><br>
+                    <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>3</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span style='color: red; font-weight: bold;'>11</span></span><br>
+                    <span class="vertrek">23:09</span><br>
+                    <span class="vertrek">23:27</span>
+                </li>
+                
+                <li style="background: #ffcccc; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    <span style='color: red;'>CANCELLED</span><br>
+                    <span class="station">Leiden C.</span><br>
+                    <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>5b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>18</span></span><br>
+                    <span class="vertrek">22:30</span><br>
+                    <span class="vertrek">23:18</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    
+                    <span class="station">Leiden C.</span><br>
+                    <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>5b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>15</span></span><br>
+                    <span class="vertrek">22:44<span style='color: red; font-weight: bold;'>+6</span></span><br>
+                    <span class="vertrek">23:33<span style='color: red; font-weight: bold;'>+3</span></span>
+                </li>
+                
+    </ul>
     
-    <li style="margin-bottom: 10px; border-bottom: 10px solid #003399; padding-bottom: 10px;">
-        <div class="status"><span style='color: red;'>ALTERNATIVE_TRANSPORT</span></div>
-        <ul style="list-style-type: none; padding-left: 0; margin: 0;">
+    <div class="etappe-header">Utrecht C. ➔ Arnhem C.</div>
+    <ul style="border-bottom: 10px solid #003399; padding-bottom: 10px; margin-bottom: 20px;">
     
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Leiden C.</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>8b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>9</span></span><br>
-                <span class="vertrek">20:48<span style='color: red; font-weight: bold;'>1</span></span><br>
-                <span class="vertrek">20:59</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Den Haag Centraal</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>7</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>12</span></span><br>
-                <span class="vertrek">21:10</span><br>
-                <span class="vertrek">21:47</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Utrecht C.</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>19</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
-                <span class="vertrek">21:54</span><br>
-                <span class="vertrek">22:15</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Veenendaal-De Klomp, P&R terrein</span><br>
-                <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
-                <span class="vertrek">22:20</span><br>
-                <span class="vertrek">22:53</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Arnhem C.</span><br>
-                <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>9</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
-                <span class="vertrek">23:05</span><br>
-                <span class="vertrek">23:33</span>
-            </li>
-            
-        </ul>
-    </li>
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    <span style='color: red;'>ALTERNATIVE_TRANSPORT</span><br>
+                    <span class="station">Utrecht C.</span><br>
+                    <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>19</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
+                    <span class="vertrek">22:24</span><br>
+                    <span class="vertrek">22:45</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    <span style='color: red;'>ALTERNATIVE_TRANSPORT</span><br>
+                    <span class="station">Veenendaal-De Klomp, P&R terrein</span><br>
+                    <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
+                    <span class="vertrek">22:50</span><br>
+                    <span class="vertrek">23:23</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    <span style='color: red;'>ALTERNATIVE_TRANSPORT</span><br>
+                    <span class="station">Utrecht C.</span><br>
+                    <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>19</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
+                    <span class="vertrek">22:39</span><br>
+                    <span class="vertrek">23:00</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    <span style='color: red;'>ALTERNATIVE_TRANSPORT</span><br>
+                    <span class="station">Veenendaal-De Klomp, P&R terrein</span><br>
+                    <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
+                    <span class="vertrek">23:05</span><br>
+                    <span class="vertrek">23:38</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    <span style='color: red;'>ALTERNATIVE_TRANSPORT</span><br>
+                    <span class="station">Utrecht C.</span><br>
+                    <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>19</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
+                    <span class="vertrek">22:54</span><br>
+                    <span class="vertrek">23:15</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    <span style='color: red;'>ALTERNATIVE_TRANSPORT</span><br>
+                    <span class="station">Veenendaal-De Klomp, P&R terrein</span><br>
+                    <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
+                    <span class="vertrek">23:20</span><br>
+                    <span class="vertrek">23:53</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    <span style='color: red;'>ALTERNATIVE_TRANSPORT</span><br>
+                    <span class="station">Utrecht C.</span><br>
+                    <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>19</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
+                    <span class="vertrek">23:24</span><br>
+                    <span class="vertrek">23:45</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    <span style='color: red;'>ALTERNATIVE_TRANSPORT</span><br>
+                    <span class="station">Veenendaal-De Klomp, P&R terrein</span><br>
+                    <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
+                    <span class="vertrek">23:50</span><br>
+                    <span class="vertrek">00:23</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    <span style='color: red;'>ALTERNATIVE_TRANSPORT</span><br>
+                    <span class="station">Utrecht C.</span><br>
+                    <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>19</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
+                    <span class="vertrek">23:54</span><br>
+                    <span class="vertrek">00:15</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    <span style='color: red;'>ALTERNATIVE_TRANSPORT</span><br>
+                    <span class="station">Veenendaal-De Klomp, P&R terrein</span><br>
+                    <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
+                    <span class="vertrek">00:20</span><br>
+                    <span class="vertrek">00:53</span>
+                </li>
+                
+    </ul>
     
-    <li style="margin-bottom: 10px; border-bottom: 10px solid #003399; padding-bottom: 10px;">
-        <div class="status"><span style='color: red;'>CANCELLED</span></div>
-        <ul style="list-style-type: none; padding-left: 0; margin: 0;">
+    <div class="etappe-header">Arnhem C. ➔ Dtc De Huet</div>
+    <ul style="border-bottom: 10px solid #003399; padding-bottom: 10px; margin-bottom: 20px;">
     
-            <li style="background: #ffcccc; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Leiden C.</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>5b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>18</span></span><br>
-                <span class="vertrek">21:00</span><br>
-                <span class="vertrek">21:48</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Utrecht C.</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>19</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
-                <span class="vertrek">21:54</span><br>
-                <span class="vertrek">22:15</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Veenendaal-De Klomp, P&R terrein</span><br>
-                <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
-                <span class="vertrek">22:20</span><br>
-                <span class="vertrek">22:53</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Arnhem C.</span><br>
-                <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>9</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
-                <span class="vertrek">23:05</span><br>
-                <span class="vertrek">23:33</span>
-            </li>
-            
-        </ul>
-    </li>
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    
+                    <span class="station">Arnhem C.</span><br>
+                    <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>6b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
+                    <span class="vertrek">22:35</span><br>
+                    <span class="vertrek">23:03</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    
+                    <span class="station">Arnhem C.</span><br>
+                    <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>9</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
+                    <span class="vertrek">23:05</span><br>
+                    <span class="vertrek">23:33</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    
+                    <span class="station">Arnhem C.</span><br>
+                    <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>6b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
+                    <span class="vertrek">23:35</span><br>
+                    <span class="vertrek">00:03</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    
+                    <span class="station">Arnhem C.</span><br>
+                    <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>9</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
+                    <span class="vertrek">00:05</span><br>
+                    <span class="vertrek">00:33</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                    
+                    <span class="station">Arnhem C.</span><br>
+                    <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>6b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
+                    <span class="vertrek">06:05</span><br>
+                    <span class="vertrek">06:33</span>
+                </li>
+                
+    </ul>
     
-    <li style="margin-bottom: 10px; border-bottom: 10px solid #003399; padding-bottom: 10px;">
-        <div class="status"><span style='color: red;'>ALTERNATIVE_TRANSPORT</span></div>
-        <ul style="list-style-type: none; padding-left: 0; margin: 0;">
-    
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Leiden C.</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>5b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
-                <span class="vertrek">21:14<span style='color: red; font-weight: bold;'>4</span></span><br>
-                <span class="vertrek">22:30</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Veenendaal-De Klomp, P&R terrein</span><br>
-                <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
-                <span class="vertrek">22:50</span><br>
-                <span class="vertrek">23:23</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Arnhem C.</span><br>
-                <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>6b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
-                <span class="vertrek">23:35</span><br>
-                <span class="vertrek">00:03</span>
-            </li>
-            
-        </ul>
-    </li>
-    
-    <li style="margin-bottom: 10px; border-bottom: 10px solid #003399; padding-bottom: 10px;">
-        <div class="status"><span style='color: red;'>ALTERNATIVE_TRANSPORT</span></div>
-        <ul style="list-style-type: none; padding-left: 0; margin: 0;">
-    
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Leiden C.</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>8b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span style='color: red; font-weight: bold;'>11</span></span><br>
-                <span class="vertrek">21:18<span style='color: red; font-weight: bold;'>2</span></span><br>
-                <span class="vertrek">21:29<span style='color: red; font-weight: bold;'>1</span></span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Den Haag Centraal</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>7</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>12</span></span><br>
-                <span class="vertrek">21:40</span><br>
-                <span class="vertrek">22:17</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Utrecht C.</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>19</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
-                <span class="vertrek">22:24</span><br>
-                <span class="vertrek">22:45</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Veenendaal-De Klomp, P&R terrein</span><br>
-                <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
-                <span class="vertrek">22:50</span><br>
-                <span class="vertrek">23:23</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Arnhem C.</span><br>
-                <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>6b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
-                <span class="vertrek">23:35</span><br>
-                <span class="vertrek">00:03</span>
-            </li>
-            
-        </ul>
-    </li>
-    
-    <li style="margin-bottom: 10px; border-bottom: 10px solid #003399; padding-bottom: 10px;">
-        <div class="status"><span style='color: red;'>CANCELLED</span></div>
-        <ul style="list-style-type: none; padding-left: 0; margin: 0;">
-    
-            <li style="background: #ffcccc; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Leiden C.</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>5b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>18</span></span><br>
-                <span class="vertrek">21:30</span><br>
-                <span class="vertrek">22:18</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Utrecht C.</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>19</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
-                <span class="vertrek">22:24</span><br>
-                <span class="vertrek">22:45</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Veenendaal-De Klomp, P&R terrein</span><br>
-                <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
-                <span class="vertrek">22:50</span><br>
-                <span class="vertrek">23:23</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Arnhem C.</span><br>
-                <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>6b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
-                <span class="vertrek">23:35</span><br>
-                <span class="vertrek">00:03</span>
-            </li>
-            
-        </ul>
-    </li>
-    
-    <li style="margin-bottom: 10px; border-bottom: 10px solid #003399; padding-bottom: 10px;">
-        <div class="status"><span style='color: red;'>ALTERNATIVE_TRANSPORT</span></div>
-        <ul style="list-style-type: none; padding-left: 0; margin: 0;">
-    
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Leiden C.</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>5b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>3</span></span><br>
-                <span class="vertrek">21:44<span style='color: red; font-weight: bold;'>1</span></span><br>
-                <span class="vertrek">23:06</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Ede-Wageningen, P+R achterzijde station</span><br>
-                <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
-                <span class="vertrek">23:27</span><br>
-                <span class="vertrek">00:00</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Arnhem C.</span><br>
-                <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>9</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
-                <span class="vertrek">00:05</span><br>
-                <span class="vertrek">00:33</span>
-            </li>
-            
-        </ul>
-    </li>
-    
-    <li style="margin-bottom: 10px; border-bottom: 10px solid #003399; padding-bottom: 10px;">
-        <div class="status"><span style='color: red;'>ALTERNATIVE_TRANSPORT</span></div>
-        <ul style="list-style-type: none; padding-left: 0; margin: 0;">
-    
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Leiden C.</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>8b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>9</span></span><br>
-                <span class="vertrek">21:48</span><br>
-                <span class="vertrek">21:59<span style='color: red; font-weight: bold;'>1</span></span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Den Haag Centraal</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>7</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>12</span></span><br>
-                <span class="vertrek">22:10</span><br>
-                <span class="vertrek">22:47</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Utrecht C.</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>19</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
-                <span class="vertrek">22:54</span><br>
-                <span class="vertrek">23:15</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Veenendaal-De Klomp, P&R terrein</span><br>
-                <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
-                <span class="vertrek">23:20</span><br>
-                <span class="vertrek">23:53</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Arnhem C.</span><br>
-                <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>9</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
-                <span class="vertrek">00:05</span><br>
-                <span class="vertrek">00:33</span>
-            </li>
-            
-        </ul>
-    </li>
-    
-    <li style="margin-bottom: 10px; border-bottom: 10px solid #003399; padding-bottom: 10px;">
-        <div class="status"><span style='color: red;'>CANCELLED</span></div>
-        <ul style="list-style-type: none; padding-left: 0; margin: 0;">
-    
-            <li style="background: #ffcccc; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Leiden C.</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>5b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>18</span></span><br>
-                <span class="vertrek">22:00</span><br>
-                <span class="vertrek">22:48</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Utrecht C.</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>19</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
-                <span class="vertrek">22:54</span><br>
-                <span class="vertrek">23:15</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Veenendaal-De Klomp, P&R terrein</span><br>
-                <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
-                <span class="vertrek">23:20</span><br>
-                <span class="vertrek">23:53</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Arnhem C.</span><br>
-                <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>9</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
-                <span class="vertrek">00:05</span><br>
-                <span class="vertrek">00:33</span>
-            </li>
-            
-        </ul>
-    </li>
-    
-    <li style="margin-bottom: 10px; border-bottom: 10px solid #003399; padding-bottom: 10px;">
-        <div class="status"><span style='color: red;'>ALTERNATIVE_TRANSPORT</span></div>
-        <ul style="list-style-type: none; padding-left: 0; margin: 0;">
-    
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Leiden Centraal, Voorzijde station, Bushalte G/H, Stationsplein</span><br>
-                <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
-                <span class="vertrek">03:00</span><br>
-                <span class="vertrek">03:33</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Schiphol Airport ✈</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>1-2</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>7</span></span><br>
-                <span class="vertrek">04:03</span><br>
-                <span class="vertrek">04:58</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Utrecht C.</span><br>
-                <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>19</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
-                <span class="vertrek">05:54</span><br>
-                <span class="vertrek">06:15</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Veenendaal-De Klomp, P&R terrein</span><br>
-                <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
-                <span class="vertrek">06:20</span><br>
-                <span class="vertrek">06:53</span>
-            </li>
-            
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="station">Arnhem C.</span><br>
-                <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>4b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
-                <span class="vertrek">07:05</span><br>
-                <span class="vertrek">07:33</span>
-            </li>
-            
-        </ul>
-    </li>
-    
+</body>
+</html>
