@@ -46,7 +46,7 @@ html_content = f"""
 </head>
 <body>
     <h1>Leiden C</h1>
-    <h1>Dtc De Huet</h1>
+    <h1>Dtc DH</h1>
     <div class="tijd">{tijd_vis}</div>
     <ul>
 """
@@ -57,7 +57,7 @@ for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
     # Begin een overkoepelend blok voor één complete reis (van A naar B)
     html_content += f"""
     <li style="margin-bottom: 15px; border-bottom: 2px solid #003399; padding-bottom: 10px;">
-        <div class="status" style="font-weight: bold; margin-bottom: 5px;">Reis (Status: {status})</div>
+        <div class="status" style="font-weight: bold; margin-bottom: 5px;">Status: {status}</div>
         <ul style="list-style-type: none; padding-left: 0; margin: 0;">
     """
     
@@ -96,9 +96,7 @@ for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
             # Voeg dit specifieke ritje toe aan de HTML
             html_content += f"""
             <li style="background: #f4f4f4; padding: 5px; margin-bottom: 5px; border: 1px solid #ddd;">
-                <span class="vertrek">{v_tijd}</span> <b>{v_station}</b> - Spoor: {spoor_tekst}<br>
-                <span style="font-size: 11px; color: #666;">&darr; {vervoer}</span><br>
-                <span class="vertrek">{a_tijd}</span> <b>{a_station}</b>
+                <span class="vertrek">{v_tijd}</span> <b>{v_station}</b> - Spoor: {spoor_tekst}
             </li>
             """
             
