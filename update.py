@@ -2,11 +2,18 @@ import os
 import requests
 import json
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
-# 1. Haal de API sleutel veilig op
+# NS API
 ns_key = os.environ.get("NS_API_KEY")
 
-# 2. Vraag de API om de komende 3 vertrekken van Leiden (LEDN) naar Doetinchem (DTCH)
+# TIJDZONE en "time keys"
+nl_tijdzone = ZoneInfo("Europe/Amsterdam")
+tijd_nu = datetime.now(nl_tijdzone)
+print(tijd_nu)
+tijd_straks = tijd_nu + timedelta(hours=1)
+
+# OPVRAGEN
 url = "https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips?fromStation=LEDN&toStation=DTCH"
 headers = {"Ocp-Apim-Subscription-Key": ns_key}
 response = requests.get(url, headers=headers)
@@ -28,8 +35,8 @@ html_content = f"""
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {{ font-family: sans-serif; background: #fff; color: #000; padding: 10px; }}
-        h1 {{ font-size: 18px; margin: 0 0 10px 0; color: #003399; }}
-        .tijd {{ font-size: 12px; color: #666; margin-bottom: 15px; }}
+        h1 {{ font-size: 50px; margin: 0; color: #003399; }}
+        .tijd {{ font-size: 50px; font-weight:bold; color: black; margin-bottom: 15px; }}
         ul {{ list-style-type: none; padding: 0; margin: 0; }}
         li {{ padding: 10px 0; border-bottom: 1px solid #ccc; }}
         .vertrek {{ font-weight: bold; font-size: 16px; }}
@@ -38,8 +45,9 @@ html_content = f"""
     </style>
 </head>
 <body>
-    <h1>Leiden C. &rarr; Doetinchem de Huet</h1>
-    <div class="tijd">Laatst geüpdatet: {tijd_nu}</div>
+    <h1>Leiden C</h1>
+    <h1>Utrecht C.</h1>
+    <div class="tijd">{tijd_nu}</div>
     <ul>
 """
 
