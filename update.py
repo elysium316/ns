@@ -137,8 +137,18 @@ for trip in unieke_trips[:10]:
             vervoer = leg['product']['shortCategoryName'] # Bijv. IC, SPR of BUS
             if vervoer == "TRAIN":
                 vervoer = "ST"
+
+            # CANCELLED
+            is_cancelled = leg.get('cancelled', False)
+            is_part_cancelled = leg.get('partCancelled', False)
+            if is_cancelled:
+                bg_color = "#ffcccc" # Duidelijk rood voor volledig vervallen
+            elif is_part_cancelled:
+                bg_color = "#ffe6cc" # Duidelijk oranje voor deels vervallen
+            else:
+                bg_color = "#f4f4f4" # Standaard grijs
                 
-            # --- VERTREK INFO ---
+            # NAAMGEVING
             v_station = leg['origin']['name']
             if v_station == "Leiden Centraal":
                 v_station = "Leiden C."
@@ -149,64 +159,47 @@ for trip in unieke_trips[:10]:
             elif v_station == "Doetinchem De Huet":
                 v_station = "Dtc De Huet"
             
-            # Ophalen spoorinfo
-            v_gepland = leg['origin'].get('plannedTrack', '?')
-            v_actueel = leg['origin'].get('actualTrack', v_gepland)
+            # Spoorinfo vertrek
+            v_gepland_spoor = leg['origin'].get('plannedTrack', '?')
+            v_actueel_spoor = leg['origin'].get('actualTrack', v_gepland_spoor)
 
-            # Check of het vertrekspoor is gewijzigd (zo ja, maak het rood)
-            if v_gepland != v_actueel:
-                spoor_tekst = f"<span style='color: red; font-weight: bold;'>{v_actueel}</span> (was {v_gepland})"
+            # Spoorwijziging
+            if v_gepland_spoor != v_actueel_spoor:
+                spoor_tekst = f"<span style='color: red; font-weight: bold;'>{v_actueel_spoor}</span>"
             else:
-                spoor_tekst = f"<span class='spoor'>{v_actueel}</span>"
-            
-            # --- AANKOMST INFO ---
-            a_station = leg['destination']['name']
-        
+                spoor_tekst = f"<span class='spoor'>{v_actueel_spoor}</span>"
+
+            # Vertrek vertraging
             v_gepland_str = leg['origin']['plannedDateTime']
             v_actueel_str = leg['origin'].get('actualDateTime', v_gepland_str)
             v_gepland_tijd = v_gepland_str[11:16]
-
             if v_gepland_str != v_actueel_str:
                 pt = datetime.strptime(v_gepland_str[:19], "%Y-%m-%dT%H:%M:%S")
                 at = datetime.strptime(v_actueel_str[:19], "%Y-%m-%dT%H:%M:%S")
                 delay_min = int((at - pt).total_seconds() / 60)
-                
                 if delay_min > 0:
                     v_tijd = f"{v_gepland_tijd}<span style='color: red; font-weight: bold;'>{delay_min}</span>"
                 else:
                     v_tijd = v_gepland_tijd
             else:
                 v_tijd = v_gepland_tijd
-
-            # Spoor (met wijzigings-check)
-            v_gepland_spoor = leg['origin'].get('plannedTrack', '?')
-            v_actueel_spoor = leg['origin'].get('actualTrack', v_gepland_spoor)
-            if v_gepland_spoor != v_actueel_spoor:
-                spoor_tekst = f"<span style='color: red; font-weight: bold;'>{v_actueel_spoor}</span>"
-            else:
-                spoor_tekst = f"<span class='spoor'>{v_actueel_spoor}</span>"
-                
+            
+            # Info aankomst spoor         
             a_gepland_spoor = leg['destination'].get('plannedTrack', '?')
             a_actueel_spoor = leg['destination'].get('actualTrack', a_gepland_spoor)
             if a_gepland_spoor != a_actueel_spoor:
                 a_spoor_tekst = f"<span style='color: red; font-weight: bold;'>{a_actueel_spoor}</span>"
             else:
                 a_spoor_tekst = f"<span class='spoor'>{a_actueel_spoor}</span>"
-            
-            # --- AANKOMST INFO ---
-            a_station = leg['destination']['name']
-            a_station = a_station.replace(" Centraal", " C.") # Kort de naam af
-            
-            # Aankomsttijd (met vertragings-check)
+        
+            # Vertraging aankomst
             a_gepland_str = leg['destination']['plannedDateTime']
             a_actueel_str = leg['destination'].get('actualDateTime', a_gepland_str)
             a_gepland_tijd = a_gepland_str[11:16]
-        
             if a_gepland_str != a_actueel_str:
                 pt = datetime.strptime(a_gepland_str[:19], "%Y-%m-%dT%H:%M:%S")
                 at = datetime.strptime(a_actueel_str[:19], "%Y-%m-%dT%H:%M:%S")
                 delay_min = int((at - pt).total_seconds() / 60)
-                
                 if delay_min > 0:
                     a_tijd = f"{a_gepland_tijd}<span style='color: red; font-weight: bold;'>{delay_min}</span>"
                 else:
@@ -214,24 +207,18 @@ for trip in unieke_trips[:10]:
             else:
                 a_tijd = a_gepland_tijd
             
-            # Voeg dit specifieke ritje toe aan de HTML
+            # Toevoegen
             html_content += f"""
-            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+            <li style="background: {bg_color}; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
                 <span class="station">{v_station}</span><br>
                 <span class="spoor" style="color:black;">{vervoer}: </span><span class="spoor">{spoor_tekst}</span><span class="spoor" style="color:black;"> - </span><span class="spoor">{a_spoor_tekst}</span><br>
                 <span class="vertrek">{v_tijd}</span><br>
                 <span class="vertrek">{a_tijd}</span>
             </li>
             """
-            
-    # Sluit de reis netjes af
     html_content += """
         </ul>
     </li>
     """
-
-# 5. Sla dit op als de HTML pagina die we online gaan zetten
 with open("ld.html", "w", encoding="utf-8") as f:
     f.write(html_content)
-
-print("HTML succesvol gebouwd!")
