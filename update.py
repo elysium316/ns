@@ -35,7 +35,7 @@ html_content = f"""
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {{ font-family: sans-serif; background: #fff; color: #000; padding: 10px; }}
-        h1 {{ font-size: 42px; margin: 0; color: #003399; }}
+        h1 {{ font-size: 45px; margin: 0; color: #003399; }}
         .tijd {{ font-size: 50px; font-weight:bold; color: black; margin-bottom: 15px; }}
         ul {{ list-style-type: none; padding: 0; margin: 0; }}
         li {{ padding: 10px 0; border-bottom: 1px solid #ccc; }}
@@ -45,7 +45,7 @@ html_content = f"""
     </style>
 </head>
 <body>
-    <h1>Leiden C</h1>
+    <h1>Leiden C.</h1>
     <h1>Dtc DH</h1>
     <div class="tijd">{tijd_vis}</div>
     <ul>
@@ -96,7 +96,8 @@ for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
             # Voeg dit specifieke ritje toe aan de HTML
             html_content += f"""
             <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <span class="vertrek">{v_tijd}</span> <b>{v_station}</b> (Spoor: {spoor_tekst})
+                <b>{v_station}</b><span> - {spoor_tekst} - </span><b>{vervoer}</b><br>
+                <span class="vertrek">{v_tijd}</span>
             </li>
             """
             
