@@ -131,6 +131,7 @@ for trip in unieke_trips[:10]:
     
     # Begin het overkoepelende blok voor één complete reis
     html_content += f"""
+    <li style="margin-bottom: 20px; border-bottom: 5px solid #003399; padding-bottom: 10px;">
         <div class="status">{status}</div>
         <ul style="list-style-type: none; padding-left: 0; margin: 0;">
     """
