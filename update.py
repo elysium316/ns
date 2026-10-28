@@ -40,10 +40,10 @@ html_content = f"""
         .tijd {{ font-size: 50px; font-weight:bold; color: black; margin-bottom: 15px; }}
         ul {{ list-style-type: none; padding: 0; margin: 0; }}
         li {{ padding: 10px 0; border-bottom: 1px solid #ccc; }}
-        .vertrek {{ font-weight: bold; font-size: 65px; }}
-        .spoor {{ color: green; font-weight: bold; font-size:30px;}}
-        .status {{ color: black; font-size: 40px; }}
-        .station {{color:purple; font-size:40pt;}}
+        .vertrek {{ font-weight: bold; font-size: 70px; }}
+        .spoor {{ color: blue; font-weight: bold; font-size:40px;}}
+        .status {{ color: black; font-size: 50px; font-weight: bold}}
+        .station {{color:black; font-size:35pt; font-weight: bold}}
     </style>
 </head>
 <body style="margin:2pt;padding:2pt;">
@@ -51,7 +51,7 @@ html_content = f"""
     <h1>Dtc DH</h1>
     
     
-    <h1>test 6</h1>
+    <h1>test 7</h1>
 
     
     <div class="tijd">{tijd_vis}</div>
@@ -62,14 +62,14 @@ for trip in data.get('trips', [])[:10]: # Toon max 4 reizen
     status = trip.get('status', 'ONBEKEND')
 
     if status == "NORMAL":
-        status = "NORNAL"
+        status = "NORMAL"
     else:
-        status = f"<span style='color: red; font-weight: bold;'>{status}</span>"
+        status = f"<span style='color: red;'>{status}</span>"
     
     # Begin een overkoepelend blok voor één complete reis (van A naar B)
     html_content += f"""
     <li style="margin-bottom: 15px; border-bottom: 2px solid #003399; padding-bottom: 10px;">
-        <div class="status"">{status}</div>
+        <div class="status">{status}</div>
         <ul style="list-style-type: none; padding-left: 0; margin: 0;">
     """
     
@@ -114,7 +114,7 @@ for trip in data.get('trips', [])[:10]: # Toon max 4 reizen
                 delay_min = int((at - pt).total_seconds() / 60)
                 
                 if delay_min > 0:
-                    v_tijd = f"{v_gepland_tijd}<span style='color: red; font-weight: bold;'>+{delay_min}</span>"
+                    v_tijd = f"{v_gepland_tijd}<span style='color: red; font-weight: bold;'>{delay_min}</span>"
                 else:
                     v_tijd = v_gepland_tijd
             else:
@@ -150,7 +150,7 @@ for trip in data.get('trips', [])[:10]: # Toon max 4 reizen
                 delay_min = int((at - pt).total_seconds() / 60)
                 
                 if delay_min > 0:
-                    a_tijd = f"{a_gepland_tijd}<span style='color: red; font-weight: bold;'>+{delay_min}</span>"
+                    a_tijd = f"{a_gepland_tijd}<span style='color: red; font-weight: bold;'>{delay_min}</span>"
                 else:
                     a_tijd = a_gepland_tijd
             else:
