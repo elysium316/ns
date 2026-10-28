@@ -7,34 +7,87 @@ from zoneinfo import ZoneInfo
 # NS API
 ns_key = os.environ.get("NS_API_KEY")
 
-# tijdzone
 nl_tijdzone = ZoneInfo("Europe/Amsterdam")
 tijd_nu = datetime.now(nl_tijdzone)
-tijd_zoeken = tijd_nu - timedelta(minutes=30) # hours=1, 
-ns_tijd = tijd_zoeken.strftime('%Y-%m-%dT%H:%M:%S')
-tijd_vis = tijd_nu.strftime('%H:%M')
-print(f"{tijd_zoeken}, {ns_tijd}, {tijd_vis}")
 
-# OPVRAGEN
-ns_tijd = tijd_zoeken.isoformat(timespec='seconds')
+# ---------------------------------------------------------
+# AANVRAAG 1: Vanaf half uurtje geleden
+# ---------------------------------------------------------
+tijd_zoeken_1 = tijd_nu - timedelta(hours=1,minutes=30)
+ns_tijd_1 = tijd_zoeken_1.isoformat(timespec='seconds')
 
-url = "https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips"
-headers = {"Ocp-Apim-Subscription-Key": ns_key}
-
-params = {
-    "fromStation": "LEDN",
-    "toStation": "DTCH",
-    "dateTime": ns_tijd
+params_1 = {
+    "fromStation": "LEDN", # Leiden Centraal
+    "toStation": "DTCH",    # Doetinchem De Huet
+    "dateTime": ns_tijd_1
 }
 
-response = requests.get(url, headers=headers, params=params)
+response_1 = requests.get(url, headers=headers, params=params_1)
 
-if response.status_code != 200:
-    print(f"Fout bij ophalen NS data: {response.status_code}")
-    print(f"Wat zegt de NS zelf? -> {response.text}")
+if response_1.status_code != 200:
+    print(f"Fout bij aanvraag 1: {response_1.status_code} - {response_1.text}")
     exit(1)
 
-data = response.json()
+data_1 = response_1.json()
+
+# Haal de lijst met reizen uit het eerste antwoord
+trips_1 = data_1.get('trips', [])
+
+# ---------------------------------------------------------
+# AANVRAAG 2: Voor de reizen die daarna komen
+# ---------------------------------------------------------
+# We kijken naar de geplande vertrektijd van de LAATSTE reis uit aanvraag 1
+# Als we geen reizen hebben gevonden, zoeken we gewoon 2 uur in de toekomst.
+if len(trips_1) > 0:
+    # Pak de vertrektijd van de eerste 'leg' van de laatste 'trip'
+    laatste_vertrek_str = trips_1[-1]['legs'][0]['origin']['plannedDateTime']
+    # Zet de string om naar een datetime object en tel er 1 minuut bij op
+    # (zodat we de laatste reis niet nog een keer opvragen)
+    laatste_vertrek = datetime.strptime(laatste_vertrek_str[:19], "%Y-%m-%dT%H:%M:%S")
+    laatste_vertrek = laatste_vertrek.replace(tzinfo=nl_tijdzone)
+    tijd_zoeken_2 = laatste_vertrek + timedelta(minutes=1)
+else:
+    tijd_zoeken_2 = tijd_nu # + timedelta(hours=2)
+
+ns_tijd_2 = tijd_zoeken_2.isoformat(timespec='seconds')
+
+params_2 = {
+    "fromStation": "LEDN",
+    "toStation": "DTCH",
+    "dateTime": ns_tijd_2
+}
+
+response_2 = requests.get(url, headers=headers, params=params_2)
+
+if response_2.status_code != 200:
+    print(f"Fout bij aanvraag 2: {response_2.status_code} - {response_2.text}")
+    exit(1)
+
+data_2 = response_2.json()
+
+# Haal de lijst met reizen uit het tweede antwoord
+trips_2 = data_2.get('trips', [])
+
+# ---------------------------------------------------------
+# SAMENVOEGEN
+# ---------------------------------------------------------
+# Plak de twee lijsten met reizen aan elkaar
+alle_trips = trips_1 + trips_2
+
+# Optioneel: Haal dubbele reizen eruit (soms overlappen API resultaten)
+# We gebruiken de 'checksum' of unieke combinatie van vertrektijd om dubbelen te filteren.
+unieke_trips = []
+geziene_vertrektijden = set()
+
+for trip in alle_trips:
+    if len(trip.get('legs', [])) > 0:
+        vertrek = trip['legs'][0]['origin']['plannedDateTime']
+        if vertrek not in geziene_vertrektijden:
+            unieke_trips.append(trip)
+            geziene_vertrektijden.add(vertrek)
+
+# 'unieke_trips' bevat nu je gecombineerde lijst (waarschijnlijk zo'n 8 tot 12 reizen)
+print(f"Totaal aantal unieke reizen gevonden: {len(unieke_trips)}")
 
 # 3. Begin met het bouwen van de HTML pagina (ZONDER Javascript)
 html_content = f"""
@@ -60,25 +113,18 @@ html_content = f"""
     <h1>Dtc DH</h1>
     
     
-    <h1>test 9</h1>
+    <h1>test 10</h1>
 
     
     <div class="tijd">{tijd_vis}</div>
     <ul>
 """
-for trip in data.get('trips', [])[:4]: 
+for trip in unieke_trips[:10]: 
     status = trip.get('status', 'ONBEKEND')
     if status == "NORMAL":
         status = "NORMAL"
     else:
         status = f"<span style='color: red;'>{status}</span>"
-
-    # 2. Bepaal de begin- en eindtijd van de héle reis (voor de gele koptekst)
-    if len(trip.get('legs', [])) > 0:
-        reis_start = trip['legs'][0]['origin']['plannedDateTime'][11:16]
-        reis_eind = trip['legs'][-1]['destination']['plannedDateTime'][11:16]
-    else:
-        reis_start, reis_eind = "?", "?"
     
     # Begin het overkoepelende blok voor één complete reis
     html_content += f"""
@@ -173,7 +219,7 @@ for trip in data.get('trips', [])[:4]:
             html_content += f"""
             <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
                 <span class="station">{v_station}</span><br>
-                <span class="spoor" style="color:black;">{vervoer}: </span><span class="spoor">{spoor_tekst}</span> - <span class="spoor">{a_spoor_tekst}</span><br>
+                <span class="spoor" style="color:black;">{vervoer}: </span><span class="spoor">{spoor_tekst}</span><span class="spoor" style="color:black;"> - </span><span class="spoor">{a_spoor_tekst}</span><br>
                 <span class="vertrek">{v_tijd}</span><br>
                 <span class="vertrek">{a_tijd}</span>
             </li>
