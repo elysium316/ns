@@ -6,6 +6,8 @@ from zoneinfo import ZoneInfo
 
 # NS API
 ns_key = os.environ.get("NS_API_KEY")
+url = "https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips"
+headers = {"Ocp-Apim-Subscription-Key": ns_key}
 
 nl_tijdzone = ZoneInfo("Europe/Amsterdam")
 tijd_nu = datetime.now(nl_tijdzone)
