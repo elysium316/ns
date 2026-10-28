@@ -22,8 +22,8 @@ url = "https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips"
 headers = {"Ocp-Apim-Subscription-Key": ns_key}
 
 params = {
-    "fromStation": "LW",
-    "toStation": "SKD",
+    "fromStation": "LEDN",
+    "toStation": "DTCH",
     "dateTime": ns_tijd
 }
 
