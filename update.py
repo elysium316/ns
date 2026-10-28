@@ -63,7 +63,7 @@ for trip in data.get('trips', [])[:10]: # Toon max 4 reizen
 
     if status == "NORMAL":
         status = "NORNAL"
-    elif status == ""
+    else:
         status = f"<span style='color: red; font-weight: bold;'>{status}</span>"
     
     # Begin een overkoepelend blok voor één complete reis (van A naar B)
