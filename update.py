@@ -106,7 +106,7 @@ html_content = f"""
         ul {{ list-style-type: none; padding: 0; margin: 0; }}
         li {{ padding: 10px 0; border-bottom: 1px solid #ccc; }}
         .vertrek {{ font-weight: bold; font-size: 72px; }}
-        .spoor {{ color: blue; font-weight: bold; font-size:45px;}}
+        .spoor {{ color: blue; font-weight: bold; font-size:50px;}}
         .status {{ color: black; font-size: 50px; font-weight: bold}}
         .station {{color:black; font-size:33pt; font-weight: bold}}
     </style>
