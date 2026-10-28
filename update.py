@@ -40,18 +40,18 @@ html_content = f"""
         .tijd {{ font-size: 50px; font-weight:bold; color: black; margin-bottom: 15px; }}
         ul {{ list-style-type: none; padding: 0; margin: 0; }}
         li {{ padding: 10px 0; border-bottom: 1px solid #ccc; }}
-        .vertrek {{ font-weight: bold; font-size: 40px; }}
+        .vertrek {{ font-weight: bold; font-size: 50px; }}
         .spoor {{ color: green; font-weight: bold; }}
         .status {{ color: #d00; font-size: 30px; }}
         .station {{color:purple; font-size:30pt;}}
     </style>
 </head>
-<body style="margin:3pt;padding:3pt;">
+<body style="margin:2pt;padding:2pt;">
     <h1>Leiden C.</h1>
     <h1>Dtc DH</h1>
     
     
-    <h1>test 3</h1>
+    <h1>test 4</h1>
 
     
     <div class="tijd">{tijd_vis}</div>
@@ -101,8 +101,15 @@ for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
         
             v_gepland_tijd = leg['origin']['plannedDateTime'][11:16]
             v_actueel_tijd = leg['origin'].get('actualDateTime', leg['origin']['plannedDateTime'])[11:16]
-            if v_gepland_tijd != v_actueel_tijd:
-                v_tijd = f"<del style='color:green;'>{v_gepland_tijd}</del> <span style='color: red; font-weight: bold;'>{v_actueel_tijd}</span>"
+            if v_gepland_str != v_actueel_str:
+                pt = datetime.strptime(v_gepland_str[:19], "%Y-%m-%dT%H:%M:%S")
+                at = datetime.strptime(v_actueel_str[:19], "%Y-%m-%dT%H:%M:%S")
+                delay_min = int((at - pt).total_seconds() / 60)
+                
+                if delay_min > 0:
+                    v_tijd = f"{v_gepland_tijd} <span style='color: red; font-weight: bold;'>+{delay_min}</span>"
+                else:
+                    v_tijd = v_gepland_tijd
             else:
                 v_tijd = v_gepland_tijd
 
@@ -128,8 +135,16 @@ for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
             # Aankomsttijd (met vertragings-check)
             a_gepland_tijd = leg['destination']['plannedDateTime'][11:16]
             a_actueel_tijd = leg['destination'].get('actualDateTime', leg['destination']['plannedDateTime'])[11:16]
-            if a_gepland_tijd != a_actueel_tijd:
-                a_tijd = f"<del style='color: #999;'>{a_gepland_tijd}</del> <span style='color: red; font-weight: bold;'>{a_actueel_tijd}</span>"
+        
+            if a_gepland_str != a_actueel_str:
+                pt = datetime.strptime(a_gepland_str[:19], "%Y-%m-%dT%H:%M:%S")
+                at = datetime.strptime(a_actueel_str[:19], "%Y-%m-%dT%H:%M:%S")
+                delay_min = int((at - pt).total_seconds() / 60)
+                
+                if delay_min > 0:
+                    a_tijd = f"{a_gepland_tijd} <span style='color: red; font-weight: bold;'>+{delay_min}</span>"
+                else:
+                    a_tijd = a_gepland_tijd
             else:
                 a_tijd = a_gepland_tijd
             
