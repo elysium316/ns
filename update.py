@@ -16,22 +16,27 @@ tijd_vis = tijd_nu.strftime('%H:%M')
 print(f"{tijd_zoeken}, {ns_tijd}, {tijd_vis}")
 
 # OPVRAGEN
+ns_tijd = tijd_zoeken.strftime('%Y-%m-%dT%H:%M:%S%z') 
+
+# 2. Gebruik de basis-URL zonder variabelen erin
 url = "https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips"
 headers = {"Ocp-Apim-Subscription-Key": ns_key}
 
-# Laat requests de parameters en URL-encoding (zoals de + in de tijdzone) veilig afhandelen
+# 3. Laat 'requests' de variabelen veilig formatteren
 params = {
     "fromStation": "LW",
     "toStation": "SKD",
-    "dateTime": ns_tijd,
-    "nextAdvices": 5  # 5 of max 6 is vaak het limiet bij de NS API
+    "dateTime": ns_tijd
+    # We laten een extra 'aantal' parameter weg, NS geeft er standaard al genoeg
 }
 
-response = requests.get(url, headers=headers)
+# 4. Voer het request uit
+response = requests.get(url, headers=headers, params=params)
 
-# Als de API een fout geeft (bijv. verkeerde sleutel), stop dan
+# 5. Check op fouten, en PRINT DE TEKST VAN DE NS als het fout gaat!
 if response.status_code != 200:
     print(f"Fout bij ophalen NS data: {response.status_code}")
+    print(f"Wat zegt de NS zelf? -> {response.text}")
     exit(1)
 
 data = response.json()
