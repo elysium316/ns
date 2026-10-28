@@ -39,12 +39,12 @@ html_content = f"""
         .tijd {{ font-size: 50px; font-weight:bold; color: black; margin-bottom: 15px; }}
         ul {{ list-style-type: none; padding: 0; margin: 0; }}
         li {{ padding: 10px 0; border-bottom: 1px solid #ccc; }}
-        .vertrek {{ font-weight: bold; font-size: 16px; }}
+        .vertrek {{ font-weight: bold; font-size: 30px; }}
         .spoor {{ color: #003399; font-weight: bold; }}
         .status {{ color: #d00; font-size: 12px; }}
     </style>
 </head>
-<body>
+<body style="margin:2pt 0 2pt 0;padding:2pt 0 2pt 0;">
     <h1>Leiden C.</h1>
     <h1>Dtc DH</h1>
     <div class="tijd">{tijd_vis}</div>
@@ -97,7 +97,7 @@ for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
             html_content += f"""
             <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
                 <b>{v_station}</b><span> - {spoor_tekst} - </span><b>{vervoer}</b><br>
-                <span class="vertrek">{v_tijd}</span>
+                <span class="vertrek">{v_tijd} - {a_tijd}</span>
             </li>
             """
             
