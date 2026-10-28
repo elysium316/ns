@@ -17,9 +17,9 @@ tijd_zoeken = (tijd_nu - timedelta(minutes=30)).isoformat(timespec='seconds')
 # 1. DE 3 TRAJECTEN DEFINIËREN & OPHALEN
 # ---------------------------------------------------------
 etappes = [
-    {"naam": "LEDN ➔ UT", "van": "LEDN", "naar": "UT"},
-    {"naam": "UT ➔ AH", "van": "UT", "naar": "AH"},
-    {"naam": "AH ➔ DTCH", "van": "AH", "naar": "DTCH"}
+    {"naam": "LEDN - UT", "van": "LEDN", "naar": "UT"},
+    {"naam": "UT - AH", "van": "UT", "naar": "AH"},
+    {"naam": "AH - DTCH", "van": "AH", "naar": "DTCH"}
 ]
 
 afkortingen = {
@@ -72,8 +72,6 @@ html_content = f"""
     </style>
 </head>
 <body>
-    <h1>LEDN</h1>
-    <h1>DTCH</h1>
     <div class="tijd">{tijd_vis}</div>
 """
 
@@ -150,6 +148,9 @@ for bakje in alle_data_bakjes:
                     a_spoor_tekst = f"<span style='color: red; font-weight: bold;'>{a_actueel_spoor}</span>"
                 else:
                     a_spoor_tekst = f"<span class='spoor'>{a_actueel_spoor}</span>"
+
+                a_station_lang = leg['destination']['name']
+                a_station = afkortingen.get(a_station_lang, a_station_lang)
             
                 a_gepland_str = leg['destination']['plannedDateTime']
                 a_actueel_str = leg['destination'].get('actualDateTime', a_gepland_str)
@@ -168,7 +169,7 @@ for bakje in alle_data_bakjes:
                 # Geen dikke lijnen meer, gewoon rustige grijze balkjes
                 html_content += f"""
                 <li style="background: {bg_color}; padding: 10px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                    <span class="station">{v_station}</span><br>
+                    <span class="station">&#10230; {a_station}</span><br>
                     <span class="spoor" style="color:black;">{vervoer}: </span><span class="spoor">{spoor_tekst}</span><span class="spoor" style="color:black;"> - </span><span class="spoor">{a_spoor_tekst}</span><br>
                     <span class="vertrek">{v_tijd}</span><br>
                     <span class="vertrek">{a_tijd}</span>
