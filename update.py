@@ -10,8 +10,7 @@ ns_key = os.environ.get("NS_API_KEY")
 # TIJDZONE en "time keys"
 nl_tijdzone = ZoneInfo("Europe/Amsterdam")
 tijd_nu = datetime.now(nl_tijdzone)
-print(tijd_nu)
-tijd_zoeken = nu - timedelta(hours=1, minutes=30)
+tijd_zoeken = tijd_nu - timedelta(hours=1, minutes=30)
 ns_tijd = tijd_zoeken.strftime('%Y-%m-%dT%H:%M:%S')
 
 # OPVRAGEN
