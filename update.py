@@ -66,19 +66,13 @@ html_content = f"""
     <div class="tijd">{tijd_vis}</div>
     <ul>
 """
-for index, trip in enumerate(data.get('trips', [])[:10]): 
+for trip in data.get('trips', [])[:4]: 
     status = trip.get('status', 'ONBEKEND')
     if status == "NORMAL":
         status = "NORMAL"
     else:
         status = f"<span style='color: red;'>{status}</span>"
-        
-    # 1. Bepaal de achtergrondkleur (Zebra-effect)
-    if index % 2 == 0:
-        bg_color = "#ffffff" # Wit voor de even blokken (Reis 1, 3, 5)
-    else:
-        bg_color = "#eef5ff" # Lichtblauw voor de oneven blokken (Reis 2, 4, 6)
-    
+
     # 2. Bepaal de begin- en eindtijd van de héle reis (voor de gele koptekst)
     if len(trip.get('legs', [])) > 0:
         reis_start = trip['legs'][0]['origin']['plannedDateTime'][11:16]
@@ -88,13 +82,6 @@ for index, trip in enumerate(data.get('trips', [])[:10]):
     
     # Begin het overkoepelende blok voor één complete reis
     html_content += f"""
-    <li style="background: {bg_color}; margin-bottom: 20px; border-bottom: 5px solid #003399; padding: 10px;">
-        
-        <!-- De grote gele NS-header -->
-        <div style="background: #ffc917; color: #003399; padding: 5px; font-size: 50px; font-weight: bold; margin-bottom: 15px;">
-            Optie {index + 1}: {reis_start} &rarr; {reis_eind}
-        </div>
-        
         <div class="status">{status}</div>
         <ul style="list-style-type: none; padding-left: 0; margin: 0;">
     """
