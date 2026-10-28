@@ -42,7 +42,7 @@ html_content = f"""
         .vertrek {{ font-weight: bold; font-size: 40px; }}
         .spoor {{ color: green; font-weight: bold; }}
         .status {{ color: #d00; font-size: 12px; }}
-        .station {{color: purple; font-size=45pt;}}
+        .station {{color:purple; font-size:45pt;}}
     </style>
 </head>
 <body style="margin:3pt;padding:3pt;">
@@ -50,7 +50,7 @@ html_content = f"""
     <h1>Dtc DH</h1>
     
     
-    <h1>test 2</h1>
+    <h1>test 3</h1>
 
     
     <div class="tijd">{tijd_vis}</div>
@@ -136,8 +136,8 @@ for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
             html_content += f"""
             <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
                 <span class="station">{v_station} - {vervoer}</span><br>
-                <span class="spoor">{spoor_tekst} - {a_spoor_tekst}</span><br>
-                <span class="vertrek">{v_tijd} - {a_tijd}</span>
+                <span class="vertrek">{v_tijd} - {spoor_tekst}</span><br>
+                <span class="spoor">{a_tijd} - {a_spoor_tekst}</span>
             </li>
             """
             
