@@ -12,9 +12,10 @@ nl_tijdzone = ZoneInfo("Europe/Amsterdam")
 tijd_nu = datetime.now(nl_tijdzone)
 tijd_zoeken = tijd_nu - timedelta(hours=1, minutes=30)
 ns_tijd = tijd_zoeken.strftime('%Y-%m-%dT%H:%M:%S')
+tijd_vis = tijd_nu.strftime('%H:%M')
 
 # OPVRAGEN
-url = "https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips?fromStation=LEDN&toStation=DTCH&dateTime={ns_tijd}"
+url = f"https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips?fromStation=LEDN&toStation=DTCH&dateTime={ns_tijd}"
 headers = {"Ocp-Apim-Subscription-Key": ns_key}
 response = requests.get(url, headers=headers)
 
@@ -46,7 +47,7 @@ html_content = f"""
 <body>
     <h1>Leiden C</h1>
     <h1>Utrecht C.</h1>
-    <div class="tijd">{tijd_nu}</div>
+    <div class="tijd">{tijd_vis}</div>
     <ul>
 """
 
