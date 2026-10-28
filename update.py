@@ -99,12 +99,13 @@ for trip in data.get('trips', [])[:10]: # Toon max 4 reizen
             # --- AANKOMST INFO ---
             a_station = leg['destination']['name']
         
-            v_gepland_tijd = leg['origin']['plannedDateTime'][11:16]
-            v_actueel_tijd = leg['origin'].get('actualDateTime', leg['origin']['plannedDateTime'])[11:16]
+            v_gepland_str = leg['origin']['plannedDateTime']
+            v_actueel_str = leg['origin'].get('actualDateTime', v_gepland_str)
+            v_gepland_tijd = v_gepland_str[11:16]
 
-            if v_gepland_tijd != v_actueel_tijd:
-                pt = datetime.strptime(v_gepland_tijd[:19], "%Y-%m-%dT%H:%M:%S")
-                at = datetime.strptime(v_actueel_tijd[:19], "%Y-%m-%dT%H:%M:%S")
+            if v_gepland_str != v_actueel_str:
+                pt = datetime.strptime(v_gepland_str[:19], "%Y-%m-%dT%H:%M:%S")
+                at = datetime.strptime(v_actueel_str[:19], "%Y-%m-%dT%H:%M:%S")
                 delay_min = int((at - pt).total_seconds() / 60)
                 
                 if delay_min > 0:
@@ -134,12 +135,13 @@ for trip in data.get('trips', [])[:10]: # Toon max 4 reizen
             a_station = a_station.replace(" Centraal", " C.") # Kort de naam af
             
             # Aankomsttijd (met vertragings-check)
-            a_gepland_tijd = leg['destination']['plannedDateTime'][11:16]
-            a_actueel_tijd = leg['destination'].get('actualDateTime', leg['destination']['plannedDateTime'])[11:16]
+            a_gepland_str = leg['destination']['plannedDateTime']
+            a_actueel_str = leg['destination'].get('actualDateTime', a_gepland_str)
+            a_gepland_tijd = a_gepland_str[11:16]
         
-            if a_gepland_tijd != a_actueel_tijd:
-                pt = datetime.strptime(a_gepland_tijd[:19], "%Y-%m-%dT%H:%M:%S")
-                at = datetime.strptime(a_actueel_tijd[:19], "%Y-%m-%dT%H:%M:%S")
+            if a_gepland_str != a_actueel_str:
+                pt = datetime.strptime(a_gepland_str[:19], "%Y-%m-%dT%H:%M:%S")
+                at = datetime.strptime(a_actueel_str[:19], "%Y-%m-%dT%H:%M:%S")
                 delay_min = int((at - pt).total_seconds() / 60)
                 
                 if delay_min > 0:
