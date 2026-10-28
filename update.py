@@ -40,8 +40,9 @@ html_content = f"""
         ul {{ list-style-type: none; padding: 0; margin: 0; }}
         li {{ padding: 10px 0; border-bottom: 1px solid #ccc; }}
         .vertrek {{ font-weight: bold; font-size: 40px; }}
-        .spoor {{ color: #003399; font-weight: bold; }}
+        .spoor {{ color: green; font-weight: bold; }}
         .status {{ color: #d00; font-size: 12px; }}
+        .station {{color: purple; font-size=45pt;}}
     </style>
 </head>
 <body style="margin:3pt;padding:3pt;">
@@ -111,6 +112,13 @@ for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
                 spoor_tekst = f"<span style='color: red; font-weight: bold;'>{v_actueel_spoor}</span>"
             else:
                 spoor_tekst = f"<span class='spoor'>{v_actueel_spoor}</span>"
+                
+            a_gepland_spoor = leg['destination'].get('plannedTrack', '?')
+            a_actueel_spoor = leg['destination'].get('actualTrack', a_gepland_spoor)
+            if a_gepland_spoor != a_actueel_spoor:
+                a_spoor_tekst = f"<span style='color: red; font-weight: bold;'>{a_actueel_spoor}</span>"
+            else:
+                a_spoor_tekst = f"<span class='spoor'>{a_actueel_spoor}</span>"
             
             # --- AANKOMST INFO ---
             a_station = leg['destination']['name']
@@ -127,7 +135,8 @@ for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
             # Voeg dit specifieke ritje toe aan de HTML
             html_content += f"""
             <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <b style="font-size=30pt;">{v_station}</b><span style="font-size=30pt;> - {spoor_tekst} - </span><b style="font-size=30pt;>{vervoer}</b><br>
+                <span class="station">{v_station} - vervoer}</span><br>
+                <span class="spoor">{spoor_tekst} - {a_spoor_tekst}</span><br>
                 <span class="vertrek">{v_tijd} - {a_tijd}</span>
             </li>
             """
