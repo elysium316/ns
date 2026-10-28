@@ -34,20 +34,24 @@ html_content = f"""
     <title>Leiden C. - Doetinchem de Huet</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body {{ font-family: sans-serif; background: #fff; color: #000; padding: 10px; }}
+        body {{ font-family: sans-serif; background: #fff; color: #000; }}
         h1 {{ font-size: 45px; margin: 0; color: #003399; }}
         .tijd {{ font-size: 50px; font-weight:bold; color: black; margin-bottom: 15px; }}
         ul {{ list-style-type: none; padding: 0; margin: 0; }}
         li {{ padding: 10px 0; border-bottom: 1px solid #ccc; }}
-        .vertrek {{ font-weight: bold; font-size: 30px; }}
+        .vertrek {{ font-weight: bold; font-size: 40px; }}
         .spoor {{ color: #003399; font-weight: bold; }}
         .status {{ color: #d00; font-size: 12px; }}
     </style>
 </head>
-<body style="margin:5pt;padding:5pt;">
+<body style="margin:3pt;padding:3pt;">
     <h1>Leiden C.</h1>
     <h1>Dtc DH</h1>
-    <h1>test 1</h1>
+    
+    
+    <h1>test 2</h1>
+
+    
     <div class="tijd">{tijd_vis}</div>
     <ul>
 """
@@ -123,7 +127,7 @@ for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
             # Voeg dit specifieke ritje toe aan de HTML
             html_content += f"""
             <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                <b>{v_station}</b><span> - {spoor_tekst} - </span><b>{vervoer}</b><br>
+                <b style="font-size=30pt;">{v_station}</b><span style="font-size=30pt;> - {spoor_tekst} - </span><b style="font-size=30pt;>{vervoer}</b><br>
                 <span class="vertrek">{v_tijd} - {a_tijd}</span>
             </li>
             """
