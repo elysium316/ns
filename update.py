@@ -124,7 +124,7 @@ for trip in data.get('trips', [])[:10]: # Toon max 4 reizen
             v_gepland_spoor = leg['origin'].get('plannedTrack', '?')
             v_actueel_spoor = leg['origin'].get('actualTrack', v_gepland_spoor)
             if v_gepland_spoor != v_actueel_spoor:
-                spoo'origin'r_tekst = f"<span style='color: red; font-weight: bold;'>{v_actueel_spoor}</span>"
+                spoor_tekst = f"<span style='color: red; font-weight: bold;'>{v_actueel_spoor}</span>"
             else:
                 spoor_tekst = f"<span class='spoor'>{v_actueel_spoor}</span>"
                 
