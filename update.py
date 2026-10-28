@@ -16,8 +16,17 @@ tijd_vis = tijd_nu.strftime('%H:%M')
 print(f"{tijd_zoeken}, {ns_tijd}, {tijd_vis}")
 
 # OPVRAGEN
-url = f"https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips?fromStation=LW&toStation=SKD&dateTime={ns_tijd}&searchForNext=5"
+url = "https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips"
 headers = {"Ocp-Apim-Subscription-Key": ns_key}
+
+# Laat requests de parameters en URL-encoding (zoals de + in de tijdzone) veilig afhandelen
+params = {
+    "fromStation": "LW",
+    "toStation": "SKD",
+    "dateTime": ns_tijd,
+    "nextAdvices": 5  # 5 of max 6 is vaak het limiet bij de NS API
+}
+
 response = requests.get(url, headers=headers)
 
 # Als de API een fout geeft (bijv. verkeerde sleutel), stop dan
