@@ -10,7 +10,7 @@ ns_key = os.environ.get("NS_API_KEY")
 # tijdzone
 nl_tijdzone = ZoneInfo("Europe/Amsterdam")
 tijd_nu = datetime.now(nl_tijdzone)
-tijd_zoeken = tijd_nu - timedelta(hours=1, minutes=30)
+tijd_zoeken = tijd_nu - timedelta(minutes=30) # hours=1, 
 ns_tijd = tijd_zoeken.strftime('%Y-%m-%dT%H:%M:%S')
 tijd_vis = tijd_nu.strftime('%H:%M')
 print(f"{tijd_zoeken}, {ns_tijd}, {tijd_vis}")
@@ -43,7 +43,7 @@ html_content = f"""
         .vertrek {{ font-weight: bold; font-size: 72px; }}
         .spoor {{ color: blue; font-weight: bold; font-size:45px;}}
         .status {{ color: black; font-size: 50px; font-weight: bold}}
-        .station {{color:black; font-size:35pt; font-weight: bold}}
+        .station {{color:black; font-size:33pt; font-weight: bold}}
     </style>
 </head>
 <body style="margin:2pt;padding:2pt;">
