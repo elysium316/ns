@@ -16,7 +16,7 @@ tijd_vis = tijd_nu.strftime('%H:%M')
 print(f"{tijd_zoeken}, {ns_tijd}, {tijd_vis}")
 
 # OPVRAGEN
-url = f"https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips?fromStation=LW&toStation=SKD&dateTime={ns_tijd}&searchForNext=10"
+url = f"https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips?fromStation=LW&toStation=SKD&dateTime={ns_tijd}&searchForNext=5"
 headers = {"Ocp-Apim-Subscription-Key": ns_key}
 response = requests.get(url, headers=headers)
 
