@@ -53,6 +53,7 @@ html_content = f"""
 
 # 4. Voeg de treinen toe aan het lijstje
 for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
+    print(trip)
     try:
         # Haal de vertrektijd uit de complexe datastructuur (neem alleen HH:MM)
         vertrek = trip['legs'][0]['origin']['plannedDateTime'][11:16]
