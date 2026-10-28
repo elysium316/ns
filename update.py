@@ -95,8 +95,8 @@ for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
             
             # Voeg dit specifieke ritje toe aan de HTML
             html_content += f"""
-            <li style="background: #f4f4f4; padding: 5px; margin-bottom: 5px; border: 1px solid #ddd;">
-                <span class="vertrek">{v_tijd}</span> <b>{v_station}</b> - Spoor: {spoor_tekst}
+            <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <span class="vertrek">{v_tijd}</span> <b>{v_station}</b> (Spoor: {spoor_tekst})
             </li>
             """
             
