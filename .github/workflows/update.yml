@@ -36,5 +36,5 @@ jobs:
           git add info.html
           # Als er niets veranderd is (geen nieuwe treinen), gooit dit geen error
           git commit -m "Automatische update treintijden" || exit 0
-          git pull --rebase origin main
+          git pull --rebase -X theirs origin main
           git push
