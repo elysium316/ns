@@ -46,7 +46,7 @@ html_content = f"""
 </head>
 <body>
     <h1>Leiden C</h1>
-    <h1>Utrecht C.</h1>
+    <h1>Dtc De Huet</h1>
     <div class="tijd">{tijd_vis}</div>
     <ul>
 """
@@ -68,7 +68,18 @@ for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
             
             # --- VERTREK INFO ---
             v_station = leg['origin']['name']
+            if v_station == "Leiden Centraal":
+                v_station = "Leiden C."
+            elif v_station == "Utrecht Centraal":
+                v_station = "Utrecht C."
+            elif v_station == "Arnhem Centraal":
+                v_station = "Arnhem C."
+            elif v_station == "Doetinchem De Huet":
+                v_station = "Dtc De Huet"
+                
             v_tijd = leg['origin']['plannedDateTime'][11:16]
+
+            # Ophalen spoorinfo
             v_gepland = leg['origin'].get('plannedTrack', '?')
             v_actueel = leg['origin'].get('actualTrack', v_gepland)
             
