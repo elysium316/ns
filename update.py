@@ -16,14 +16,12 @@ tijd_zoeken = (tijd_nu - timedelta(minutes=30)).isoformat(timespec='seconds')
 # ---------------------------------------------------------
 # 1. DE 3 TRAJECTEN DEFINIËREN & OPHALEN
 # ---------------------------------------------------------
-# We gebruiken nu direct de afkortingen in de weergave-naam
 etappes = [
     {"naam": "LEDN ➔ UT", "van": "LEDN", "naar": "UT"},
     {"naam": "UT ➔ AH", "van": "UT", "naar": "AH"},
     {"naam": "AH ➔ DTCH", "van": "AH", "naar": "DTCH"}
 ]
 
-# Een handig woordenboekje om lange namen direct te vertalen naar afkortingen
 afkortingen = {
     "Leiden Centraal": "LEDN",
     "Utrecht Centraal": "UT",
@@ -67,12 +65,10 @@ html_content = f"""
         h1 {{ font-size: 45px; margin: 0; color: #003399; }}
         .tijd {{ font-size: 60px; font-weight:bold; color: black; margin-bottom: 15px; }}
         ul {{ list-style-type: none; padding: 0; margin: 0; }}
-        li {{ padding: 10px 0; }}
         .vertrek {{ font-weight: bold; font-size: 72px; }}
         .spoor {{ color: blue; font-weight: bold; font-size: 50px; }}
-        .status {{ color: black; font-size: 50px; font-weight: bold; }}
         .station {{ color: black; font-size: 33pt; font-weight: bold; }}
-        .etappe-header {{ background: #ffc917; color: #003399; padding: 10px; font-size: 50px; font-weight: bold; margin-top: 30px; margin-bottom: 10px; border-radius: 5px; }}
+        .etappe-header {{ background: #ffc917; color: #003399; padding: 10px; font-size: 50px; font-weight: bold; margin-top: 30px; margin-bottom: 15px; border-radius: 5px; }}
     </style>
 </head>
 <body>
@@ -87,18 +83,26 @@ for bakje in alle_data_bakjes:
     
     html_content += f"""
     <div class="etappe-header">{etappe_naam}</div>
-    <ul style="border-bottom: 10px solid #003399; padding-bottom: 10px; margin-bottom: 20px;">
+    <ul style="padding: 0; margin-bottom: 30px;">
     """
     
     if not trips:
         html_content += "<li style='font-size: 40px; color: red; font-weight: bold;'>Geen reizen gevonden voor dit traject.</li>"
     
     for trip in trips[:5]: 
+        # De status van de reis verplaatsen we naar de bovenkant van de hele 'trip'
         status = trip.get('status', 'ONBEKEND')
         if status == "NORMAL":
-            status = "" 
+            status_html = "" 
         else:
-            status = f"<span style='color: red;'>{status}</span><br>"
+            status_html = f"<div style='color: red; font-size: 45px; font-weight: bold; margin-bottom: 5px;'>{status}</div>"
+        
+        # --- KLEINE GELE BALK TUSSEN REIZEN ---
+        html_content += f"""
+        <li style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 6px solid #ffc917;">
+            {status_html}
+            <ul style="list-style-type: none; padding: 0; margin: 0;">
+        """
         
         for leg in trip.get('legs', []):
             if leg.get('travelType') == 'PUBLIC_TRANSIT':
@@ -115,9 +119,8 @@ for bakje in alle_data_bakjes:
                 else:
                     bg_color = "#f4f4f4" 
                     
-                # NAAMGEVING (met het nieuwe woordenboekje!)
                 v_station_lang = leg['origin']['name']
-                v_station = afkortingen.get(v_station_lang, v_station_lang) # Vertaal of behoud origineel
+                v_station = afkortingen.get(v_station_lang, v_station_lang)
                 
                 v_gepland_spoor = leg['origin'].get('plannedTrack', '?')
                 v_actueel_spoor = leg['origin'].get('actualTrack', v_gepland_spoor)
@@ -162,9 +165,9 @@ for bakje in alle_data_bakjes:
                 else:
                     a_tijd = a_gepland_tijd
                 
+                # --- BLAUWE BALK TUSSEN LEGS ---
                 html_content += f"""
-                <li style="background: {bg_color}; padding: 5px 0; margin-bottom: 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                    {status}
+                <li style="background: {bg_color}; padding: 10px; margin-bottom: 8px; border-bottom: 4px solid #003399;">
                     <span class="station">{v_station}</span><br>
                     <span class="spoor" style="color:black;">{vervoer}: </span><span class="spoor">{spoor_tekst}</span><span class="spoor" style="color:black;"> - </span><span class="spoor">{a_spoor_tekst}</span><br>
                     <span class="vertrek">{v_tijd}</span><br>
@@ -172,6 +175,11 @@ for bakje in alle_data_bakjes:
                 </li>
                 """
     
+        html_content += """
+            </ul>
+        </li>
+        """
+        
     html_content += """
     </ul>
     """
@@ -184,4 +192,4 @@ html_content += """
 with open("ld.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
-print("Succes! HTML opgebouwd met officiële NS afkortingen.")
+print("Succes! Reizen en legs gescheiden met de nieuwe NS-kleuren.")
