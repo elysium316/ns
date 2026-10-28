@@ -13,9 +13,10 @@ tijd_nu = datetime.now(nl_tijdzone)
 tijd_zoeken = tijd_nu - timedelta(hours=1, minutes=30)
 ns_tijd = tijd_zoeken.strftime('%Y-%m-%dT%H:%M:%S')
 tijd_vis = tijd_nu.strftime('%H:%M')
+print(f"{tijd_zoeken}, {ns_tijd}, {tijd_vis}")
 
 # OPVRAGEN
-url = f"https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips?fromStation=LEDN&toStation=DTCH&dateTime={ns_tijd}"
+url = f"https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips?fromStation=ASDZ&toStation=RTD&dateTime={ns_tijd}"
 headers = {"Ocp-Apim-Subscription-Key": ns_key}
 response = requests.get(url, headers=headers)
 
@@ -41,8 +42,8 @@ html_content = f"""
         li {{ padding: 10px 0; border-bottom: 1px solid #ccc; }}
         .vertrek {{ font-weight: bold; font-size: 40px; }}
         .spoor {{ color: green; font-weight: bold; }}
-        .status {{ color: #d00; font-size: 12px; }}
-        .station {{color:purple; font-size:45pt;}}
+        .status {{ color: #d00; font-size: 30px; }}
+        .station {{color:purple; font-size:30pt;}}
     </style>
 </head>
 <body style="margin:3pt;padding:3pt;">
@@ -137,7 +138,7 @@ for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
             <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
                 <span class="station">{v_station} - {vervoer}</span><br>
                 <span class="vertrek">{v_tijd} - {spoor_tekst}</span><br>
-                <span class="spoor">{a_tijd} - {a_spoor_tekst}</span>
+                <span class="vertrek">{a_tijd} - {a_spoor_tekst}</span>
             </li>
             """
             
