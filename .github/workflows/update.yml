@@ -2,11 +2,8 @@ name: Update Treintijden
 
 on:
   schedule:
-    - cron: '*/15 * * * 1,2,3,4,6'
-    - cron: '*/10 0-9 * * 5'   # Vrijdag: Elke 15 min van 00:00 t/m 09:59
-    - cron: '*/5 10-23 * * 5'  # Vrijdag: Elke 5 min van 10:00 t/m 23:59
-    - cron: '*/10 0-17 * * 0'  # Zondag: Elke 15 min van 00:00 t/m 17:59
-    - cron: '*/5 18-23 * * 0'  # Zondag: Elke 5 min van 18:00 t/m 23:59 
+    - cron: '*/10 * * * 1,2,3,4,6'
+    - cron: '*/5 * * * 0,5'
   workflow_dispatch: # Dit maakt een handmatige 'Start' knop in GitHub aan
 
 permissions:
