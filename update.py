@@ -51,29 +51,51 @@ html_content = f"""
     <ul>
 """
 
-# 4. Voeg de treinen toe aan het lijstje
 for trip in data.get('trips', [])[:4]: # Toon max 4 reizen
-    print(trip)
-    try:
-        # Haal de vertrektijd uit de complexe datastructuur (neem alleen HH:MM)
-        vertrek = trip['legs'][0]['origin']['plannedDateTime'][11:16]
-        spoor = trip['legs'][0]['origin'].get('plannedTrack', '?')
-        status = trip['status']
-        
-        html_content += f"""
-        <li>
-            <span class="vertrek">{vertrek}</span> - Spoor <span class="spoor">{spoor}</span><br>
-            <span class="status">Status: {status}</span>
-        </li>
-        """
-    except IndexError:
-        continue
-
-html_content += """
-    </ul>
-</body>
-</html>
-"""
+    status = trip.get('status', 'ONBEKEND')
+    
+    # Begin een overkoepelend blok voor één complete reis (van A naar B)
+    html_content += f"""
+    <li style="margin-bottom: 15px; border-bottom: 2px solid #003399; padding-bottom: 10px;">
+        <div class="status" style="font-weight: bold; margin-bottom: 5px;">Reis (Status: {status})</div>
+        <ul style="list-style-type: none; padding-left: 0; margin: 0;">
+    """
+    
+    # Loop nu door alle afzonderlijke voertuigen/overstappen (legs) van DEZE reis
+    for leg in trip.get('legs', []):
+        if leg.get('travelType') == 'PUBLIC_TRANSIT':
+            vervoer = leg['product']['shortCategoryName'] # Bijv. IC, SPR of BUS
+            
+            # --- VERTREK INFO ---
+            v_station = leg['origin']['name']
+            v_tijd = leg['origin']['plannedDateTime'][11:16]
+            v_gepland = leg['origin'].get('plannedTrack', '?')
+            v_actueel = leg['origin'].get('actualTrack', v_gepland)
+            
+            # Check of het vertrekspoor is gewijzigd (zo ja, maak het rood)
+            if v_gepland != v_actueel:
+                spoor_tekst = f"<span style='color: red; font-weight: bold;'>{v_actueel}</span> (was {v_gepland})"
+            else:
+                spoor_tekst = f"<span class='spoor'>{v_actueel}</span>"
+            
+            # --- AANKOMST INFO ---
+            a_station = leg['destination']['name']
+            a_tijd = leg['destination']['plannedDateTime'][11:16]
+            
+            # Voeg dit specifieke ritje toe aan de HTML
+            html_content += f"""
+            <li style="background: #f4f4f4; padding: 5px; margin-bottom: 5px; border: 1px solid #ddd;">
+                <span class="vertrek">{v_tijd}</span> <b>{v_station}</b> - Spoor: {spoor_tekst}<br>
+                <span style="font-size: 11px; color: #666;">&darr; {vervoer}</span><br>
+                <span class="vertrek">{a_tijd}</span> <b>{a_station}</b>
+            </li>
+            """
+            
+    # Sluit de reis netjes af
+    html_content += """
+        </ul>
+    </li>
+    """
 
 # 5. Sla dit op als de HTML pagina die we online gaan zetten
 with open("info.html", "w", encoding="utf-8") as f:
