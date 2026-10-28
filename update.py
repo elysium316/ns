@@ -8,10 +8,10 @@ from zoneinfo import ZoneInfo
 ns_key = os.environ.get("NS_API_KEY")
 url = "https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips"
 headers = {"Ocp-Apim-Subscription-Key": ns_key}
-tijd_vis = tijd_nu.strftime('%H:%M')
 
 nl_tijdzone = ZoneInfo("Europe/Amsterdam")
 tijd_nu = datetime.now(nl_tijdzone)
+tijd_vis = tijd_nu.strftime('%H:%M')
 
 # ---------------------------------------------------------
 # AANVRAAG 1: Vanaf half uurtje geleden
