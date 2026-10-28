@@ -16,7 +16,7 @@ tijd_vis = tijd_nu.strftime('%H:%M')
 print(f"{tijd_zoeken}, {ns_tijd}, {tijd_vis}")
 
 # OPVRAGEN
-url = f"https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips?fromStation=UT&toStation=ASD&dateTime={ns_tijd}"
+url = f"https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips?fromStation=UT&toStation=ASD&dateTime={ns_tijd}&searchForNext=10"
 headers = {"Ocp-Apim-Subscription-Key": ns_key}
 response = requests.get(url, headers=headers)
 
@@ -57,18 +57,35 @@ html_content = f"""
     <div class="tijd">{tijd_vis}</div>
     <ul>
 """
-
-for trip in data.get('trips', [])[:10]: # Toon max 4 reizen
+for index, trip in enumerate(data.get('trips', [])[:10]): 
     status = trip.get('status', 'ONBEKEND')
-
     if status == "NORMAL":
         status = "NORMAL"
     else:
         status = f"<span style='color: red;'>{status}</span>"
+        
+    # 1. Bepaal de achtergrondkleur (Zebra-effect)
+    if index % 2 == 0:
+        bg_color = "#ffffff" # Wit voor de even blokken (Reis 1, 3, 5)
+    else:
+        bg_color = "#eef5ff" # Lichtblauw voor de oneven blokken (Reis 2, 4, 6)
     
-    # Begin een overkoepelend blok voor één complete reis (van A naar B)
+    # 2. Bepaal de begin- en eindtijd van de héle reis (voor de gele koptekst)
+    if len(trip.get('legs', [])) > 0:
+        reis_start = trip['legs'][0]['origin']['plannedDateTime'][11:16]
+        reis_eind = trip['legs'][-1]['destination']['plannedDateTime'][11:16]
+    else:
+        reis_start, reis_eind = "?", "?"
+    
+    # Begin het overkoepelende blok voor één complete reis
     html_content += f"""
-    <li style="margin-bottom: 15px; border-bottom: 2px solid #003399; padding-bottom: 10px;">
+    <li style="background: {bg_color}; margin-bottom: 20px; border-bottom: 5px solid #003399; padding: 10px;">
+        
+        <!-- De grote gele NS-header -->
+        <div style="background: #ffc917; color: #003399; padding: 5px; font-size: 50px; font-weight: bold; margin-bottom: 15px;">
+            Optie {index + 1}: {reis_start} &rarr; {reis_eind}
+        </div>
+        
         <div class="status">{status}</div>
         <ul style="list-style-type: none; padding-left: 0; margin: 0;">
     """
@@ -160,7 +177,7 @@ for trip in data.get('trips', [])[:10]: # Toon max 4 reizen
             html_content += f"""
             <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
                 <span class="station">{v_station}</span><br>
-                <span class="spoor" style="color:black;">{vervoer}: </span><span class="spoor">{spoor_tekst} - {a_spoor_tekst}</span><br>
+                <span class="spoor" style="color:black;">{vervoer}: </span><span class="spoor">{spoor_tekst}</span> - <span class="spoor">{a_spoor_tekst}</span><br>
                 <span class="vertrek">{v_tijd}</span><br>
                 <span class="vertrek">{a_tijd}</span>
             </li>
