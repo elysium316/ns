@@ -35,7 +35,7 @@ html_content = f"""
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {{ font-family: sans-serif; background: #fff; color: #000; padding: 10px; }}
-        h1 {{ font-size: 50px; margin: 0; color: #003399; }}
+        h1 {{ font-size: 45px; margin: 0; color: #003399; }}
         .tijd {{ font-size: 50px; font-weight:bold; color: black; margin-bottom: 15px; }}
         ul {{ list-style-type: none; padding: 0; margin: 0; }}
         li {{ padding: 10px 0; border-bottom: 1px solid #ccc; }}
