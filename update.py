@@ -114,11 +114,6 @@ html_content = f"""
 <body style="margin:2pt;padding:2pt;">
     <h1>Leiden C.</h1>
     <h1>Dtc DH</h1>
-    
-    
-    <h1>test 10</h1>
-
-    
     <div class="tijd">{tijd_vis}</div>
     <ul>
 """
@@ -131,7 +126,7 @@ for trip in unieke_trips[:10]:
     
     # Begin het overkoepelende blok voor één complete reis
     html_content += f"""
-    <li style="margin-bottom: 10px; border-bottom: 5px solid #003399; padding-bottom: 10px;">
+    <li style="margin-bottom: 10px; border-bottom: 10px solid #003399; padding-bottom: 10px;">
         <div class="status">{status}</div>
         <ul style="list-style-type: none; padding-left: 0; margin: 0;">
     """
