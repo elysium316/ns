@@ -2,12 +2,14 @@ name: Update Treintijden
 
 on:
   schedule:
+    # Ma t/m do & za: elke 10 minuten
     - cron: '*/10 * * * 1,2,3,4,6'
+    # Zo & vr: elke 5 minuten
     - cron: '*/5 * * * 0,5'
   workflow_dispatch: # Dit maakt een handmatige 'Start' knop in GitHub aan
 
 permissions:
-  contents: write # Dit is nodig zodat de robot het HTML bestand mag opslaan
+  contents: write # Dit is nodig zodat de robot de HTML bestanden mag opslaan
 
 jobs:
   build_and_deploy:
@@ -26,15 +28,27 @@ jobs:
 
       - name: Vraag API op en bouw HTML
         env:
+          # Jouw geheime sleutel uit GitHub Secrets
           NS_API_KEY: ${{ secrets.NS_API_KEY }}
-        run: python update.py
-
-      - name: Sla de HTML pagina op in de repository
         run: |
+          # Draai eerst het ene script, dan direct het andere.
+          # Als update.py bijvoorbeeld 1.5 seconde duurt, begint update2.py direct daarna.
+          python update.py
+          python update2.py
+
+      - name: Sla de HTML paginas op in de repository
+        run: |
+          # Stel de bot in als afzender van de wijziging
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add info.html
-          # Als er niets veranderd is (geen nieuwe treinen), gooit dit geen error
+          
+          # Voeg BEIDE HTML-bestanden toe. 
+          # Verander 'info2.html' naar de naam die je in update2.py hebt ingesteld.
+          git add ld.html dl.html
+          
+          # Maak de commit (als er niets veranderd is, geeft exit 0 door ipv een error)
           git commit -m "Automatische update treintijden" || exit 0
+          
+          # Haal eventuele wijzigingen op (voorkomt conflicten) en stuur ze naar GitHub
           git pull --rebase -X theirs origin main
           git push
