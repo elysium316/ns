@@ -11,10 +11,11 @@ ns_key = os.environ.get("NS_API_KEY")
 nl_tijdzone = ZoneInfo("Europe/Amsterdam")
 tijd_nu = datetime.now(nl_tijdzone)
 print(tijd_nu)
-tijd_straks = tijd_nu + timedelta(hours=1)
+tijd_zoeken = nu - timedelta(hours=1, minutes=30)
+ns_tijd = tijd_zoeken.strftime('%Y-%m-%dT%H:%M:%S')
 
 # OPVRAGEN
-url = "https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips?fromStation=LEDN&toStation=DTCH"
+url = "https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips?fromStation=LEDN&toStation=DTCH&dateTime={ns_tijd}"
 headers = {"Ocp-Apim-Subscription-Key": ns_key}
 response = requests.get(url, headers=headers)
 
@@ -24,7 +25,6 @@ if response.status_code != 200:
     exit(1)
 
 data = response.json()
-tijd_nu = datetime.now().strftime('%H:%M:%S')
 
 # 3. Begin met het bouwen van de HTML pagina (ZONDER Javascript)
 html_content = f"""
