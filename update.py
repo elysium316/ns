@@ -40,10 +40,10 @@ html_content = f"""
         .tijd {{ font-size: 50px; font-weight:bold; color: black; margin-bottom: 15px; }}
         ul {{ list-style-type: none; padding: 0; margin: 0; }}
         li {{ padding: 10px 0; border-bottom: 1px solid #ccc; }}
-        .vertrek {{ font-weight: bold; font-size: 50px; }}
-        .spoor {{ color: green; font-weight: bold; }}
-        .status {{ color: #d00; font-size: 30px; }}
-        .station {{color:purple; font-size:30pt;}}
+        .vertrek {{ font-weight: bold; font-size: 65px; }}
+        .spoor {{ color: green; font-weight: bold; font-size:30px;}}
+        .status {{ color: black; font-size: 40px; }}
+        .station {{color:purple; font-size:40pt;}}
     </style>
 </head>
 <body style="margin:2pt;padding:2pt;">
@@ -51,7 +51,7 @@ html_content = f"""
     <h1>Dtc DH</h1>
     
     
-    <h1>test 5</h1>
+    <h1>test 6</h1>
 
     
     <div class="tijd">{tijd_vis}</div>
@@ -60,11 +60,16 @@ html_content = f"""
 
 for trip in data.get('trips', [])[:10]: # Toon max 4 reizen
     status = trip.get('status', 'ONBEKEND')
+
+    if status == "NORMAL":
+        status = "NORNAL"
+    elif status == ""
+        status = f"<span style='color: red; font-weight: bold;'>{status}</span>"
     
     # Begin een overkoepelend blok voor één complete reis (van A naar B)
     html_content += f"""
     <li style="margin-bottom: 15px; border-bottom: 2px solid #003399; padding-bottom: 10px;">
-        <div class="status" style="font-weight: bold; margin-bottom: 5px;">Status: {status}</div>
+        <div class="status"">{status}</div>
         <ul style="list-style-type: none; padding-left: 0; margin: 0;">
     """
     
@@ -155,9 +160,9 @@ for trip in data.get('trips', [])[:10]: # Toon max 4 reizen
             html_content += f"""
             <li style="background: #f4f4f4; padding: 5px 0; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
                 <span class="station">{v_station}</span><br>
-                <span class="vertrek">{vervoer}: {spoor_tekst} - {a_spoor_tekst}</span><br>
+                <span class="spoor">{vervoer}: {spoor_tekst} - {a_spoor_tekst}</span><br>
                 <span class="vertrek">{v_tijd}</span><br>
-                <span class="vertrek">{a_tijd}{a_spoor_tekst}</span>
+                <span class="vertrek">{a_tijd}</span>
             </li>
             """
             
