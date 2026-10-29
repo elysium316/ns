@@ -138,7 +138,7 @@ for bakje in alle_data_bakjes:
                 else:
                     a_spoor_tekst = f"<span class='spoor'>{a_actueel_spoor}</span>"
 
-                v_station = leg['destionation'].get('stationCode', leg['destionation']['name'])
+                a_station = leg['destination'].get('stationCode', leg['destination']['name'])
                 
                 a_gepland_str = leg['destination']['plannedDateTime']
                 a_actueel_str = leg['destination'].get('actualDateTime', a_gepland_str)
