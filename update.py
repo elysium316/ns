@@ -62,7 +62,7 @@ html_content = f"""
     </style>
 </head>
 <body>
-    <h1>Test 3</h1>
+    <h1>Test 4</h1>
     <div class="tijd">{tijd_vis}</div>
 """
 
@@ -73,9 +73,9 @@ for bakje in alle_data_bakjes:
     html_content += f"""
     <div class="etappe-header">{etappe_naam}</div>
     <!-- BLAUWE LIJN: Scheidt de grote etappes van elkaar -->
-    <ul style="padding: 0; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 10px solid #003399;">
+    <ul">
     """
-    
+    # style="padding: 0; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 10px solid #003399;
     if not trips:
         html_content += "<li style='font-size: 40px; color: red; font-weight: bold;'>Geen reizen gevonden voor dit traject.</li>"
     
@@ -88,7 +88,7 @@ for bakje in alle_data_bakjes:
         
         # GELE LIJN: Scheidt de reisopties van elkaar
         html_content += f"""
-        <li style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 4px solid #ffc917;">
+        <li style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 10px solid #ffc917;">
             {status_html}
             <ul>
         """
@@ -150,17 +150,35 @@ for bakje in alle_data_bakjes:
                     at = datetime.strptime(a_actueel_str[:19], "%Y-%m-%dT%H:%M:%S")
                     delay_min = int((at - pt).total_seconds() / 60)
                     if delay_min > 0:
-                        a_tijd = f"{a_gepland_tijd}<span style='color: red; font-weight: bold;'>+{delay_min}</span>"
+                        a_tijd = f"{a_gepland_tijd}<span style='color: red; font-weight: bold;'>{delay_min}</span>"
                     else:
                         a_tijd = a_gepland_tijd
                 else:
                     a_tijd = a_gepland_tijd
 
                 richting = leg.get('direction', 'Onbekend')
+    
+                richting_afkortingen = {
+                    "Venlo": "VL",
+                    "Ede-Wageningen": "ED",
+                    "Arnhem Centraal": "AH",
+                    "Winterswijk": "WW",
+                    "Nijmegen": "NM",
+                    "Utrecht Centraal": "UT",
+                    "Den Haag Centraal": "GVC",
+                    "Rotterdam Centraal": "RTD",
+                    "Groningen": "GN",
+                    "Drodrecht": "DD"
+                }
+                    # Haal de eindbestemming op uit de API
+                richting_voluit = leg.get('direction', 'Onbekend')
+                
+                # Check of we hier een afkorting voor hebben in ons lijstje
+                richting = richting_afkortingen.get(richting_voluit, richting_voluit)
                 
                 # Geen dikke lijnen meer, gewoon rustige grijze balkjes
                 html_content += f"""
-                <li style="background: {bg_color}; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 3px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: {bg_color}; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
                     <span class="station">&#10230; {a_station} ({richting})</span><br>
                     <span class="spoor" style="color:black;">{vervoer}: </span><span class="spoor">{spoor_tekst}</span><span class="spoor" style="color:black;"> - </span><span class="spoor">{a_spoor_tekst}</span><br>
                     <span class="vertrek">{v_tijd}</span><br>
