@@ -62,7 +62,7 @@ html_content = f"""
     </style>
 </head>
 <body>
-    <h1>Test 4</h1>
+    <h1>Test 5</h1>
     <div class="tijd">{tijd_vis}</div>
 """
 
@@ -88,7 +88,7 @@ for bakje in alle_data_bakjes:
         
         # GELE LIJN: Scheidt de reisopties van elkaar
         html_content += f"""
-        <li style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 10px solid #ffc917;">
+        <li style="padding: 0 10px 0 10px; border-bottom: 10px solid #ffc917;">
             {status_html}
             <ul>
         """
@@ -168,7 +168,8 @@ for bakje in alle_data_bakjes:
                     "Den Haag Centraal": "GVC",
                     "Rotterdam Centraal": "RTD",
                     "Groningen": "GN",
-                    "Drodrecht": "DD"
+                    "Drodrecht": "DD",
+                    "Leeuwarden": "LW"
                 }
                     # Haal de eindbestemming op uit de API
                 richting_voluit = leg.get('direction', 'Onbekend')
