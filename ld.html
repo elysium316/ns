@@ -5,43 +5,42 @@
     <title>Route: LEDN - DTCH</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body { white-space: nowrap;font-family: sans-serif; background: #fff; color: #000; margin:0; padding:0; }
-        h1 { font-size: 45px; margin: 0; color: #003399; }
-        .tijd { font-size: 60px; font-weight:bold; color: black; margin-bottom: 5px; }
-        ul { list-style-type: none; padding: 1px; margin:0; }
+        body { white-space: nowrap; font-family: sans-serif; background: #fff; color: #000; margin: 0; padding: 0; }
+        h1 { font-size: 45px; margin: 0; color: #003399; padding-left: 2pt; }
+        .tijd { font-size: 60px; font-weight: bold; color: black; margin-bottom: 5px; padding-left: 2pt; }
+        ul { list-style-type: none; padding: 0; margin: 0; }
         .vertrek { font-weight: bold; font-size: 72px; }
         .spoor { color: blue; font-weight: bold; font-size: 50px; }
         .station { color: black; font-size: 30pt; font-weight: bold; }
-        .etappe-header { background: #ffc917; color: #003399; padding: 0; font-size: 50px; font-weight: bold; margin: 5px 0 5px 0; border: 8px solid #003399; border-radius: 5px; }
+        .etappe-header { background: #ffc917; color: #003399; padding: 10px; font-size: 50px; font-weight: bold; margin: 20px 2pt 5px 2pt; border: 8px solid #003399; border-radius: 5px; }
+        
+        .menu-link {
+            display: inline-block;
+            background: #003399;
+            color: white;
+            padding: 15px 20px;
+            margin: 5px 5px 15px 5px;
+            text-decoration: none;
+            font-size: 40px;
+            font-weight: bold;
+            border-radius: 10px;
+        }
     </style>
 </head>
-<body>
-    <h1>Test 5</h1>
-    <div class="tijd">13:42</div>
+<body id="top">
+    <h1>Test 6</h1>
+    <div class="tijd">13:51</div>
+    <div style='padding: 2pt; margin-bottom: 20px;'>
+<a href='#LEDN-UT' class='menu-link'>LEDN-UT</a> <a href='#UT-AH' class='menu-link'>UT - AH</a> <a href='#AH-DTCH' class='menu-link'>AH-DTCH</a> </div>
 
-    <div class="etappe-header">LEDN-UT</div>
-    <!-- BLAUWE LIJN: Scheidt de grote etappes van elkaar -->
-    <ul">
+    <div id='LEDN-UT' class="etappe-header">LEDN-UT</div>
+    <ul>
     
-        <li style="padding: 10px 0 10px 0; border-bottom: 10px solid #ffc917;">
+        <li style="padding: 10px 0; border-bottom: 10px solid #ffc917;">
             
             <ul>
         
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                    <span class="station">&#10230; UT (ED)</span><br>
-                    <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>5b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span style='color: red; font-weight: bold;'>15</span></span><br>
-                    <span class="vertrek">13:08</span><br>
-                    <span class="vertrek">13:58</span>
-                </li>
-                
-            </ul>
-        </li>
-        
-        <li style="padding: 10px 0 10px 0; border-bottom: 10px solid #ffc917;">
-            
-            <ul>
-        
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; UT (ED)</span><br>
                     <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>5b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>19</span></span><br>
                     <span class="vertrek">13:17</span><br>
@@ -51,18 +50,18 @@
             </ul>
         </li>
         
-        <li style="padding: 10px 0 10px 0; border-bottom: 10px solid #ffc917;">
+        <li style="padding: 10px 0; border-bottom: 10px solid #ffc917;">
             
             <ul>
         
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; GVC (GVC)</span><br>
                     <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>8b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>10</span></span><br>
                     <span class="vertrek">13:18</span><br>
                     <span class="vertrek">13:29</span>
                 </li>
                 
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; UT (LW)</span><br>
                     <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>7</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>12</span></span><br>
                     <span class="vertrek">13:40</span><br>
@@ -72,11 +71,11 @@
             </ul>
         </li>
         
-        <li style="padding: 10px 0 10px 0; border-bottom: 10px solid #ffc917;">
+        <li style="padding: 10px 0; border-bottom: 10px solid #ffc917;">
             
             <ul>
         
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; UT (VL)</span><br>
                     <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>5b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span style='color: red; font-weight: bold;'>15</span></span><br>
                     <span class="vertrek">13:27</span><br>
@@ -86,11 +85,11 @@
             </ul>
         </li>
         
-        <li style="padding: 10px 0 10px 0; border-bottom: 10px solid #ffc917;">
+        <li style="padding: 10px 0; border-bottom: 10px solid #ffc917;">
             
             <ul>
         
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; UT (ED)</span><br>
                     <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>4b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span style='color: red; font-weight: bold;'>15</span></span><br>
                     <span class="vertrek">13:39</span><br>
@@ -100,45 +99,40 @@
             </ul>
         </li>
         
-    </ul>
-    
-    <div class="etappe-header">UT - AH</div>
-    <!-- BLAUWE LIJN: Scheidt de grote etappes van elkaar -->
-    <ul">
-    
-        <li style="padding: 10px 0 10px 0; border-bottom: 10px solid #ffc917;">
-            <div style='color: red; font-size: 45px; font-weight: bold; margin-bottom: 5px;'>ALTERNATIVE_TRANSPORT</div>
+        <li style="padding: 10px 0; border-bottom: 10px solid #ffc917;">
+            
             <ul>
         
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                    <span class="station">&#10230; KLP (ED)</span><br>
-                    <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span style='color: red; font-weight: bold;'>15</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
-                    <span class="vertrek">13:04<span style='color: red; font-weight: bold;'>2</span></span><br>
-                    <span class="vertrek">13:22<span style='color: red; font-weight: bold;'>2</span></span>
-                </li>
-                
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                    <span class="station">&#10230; AH (AH)</span><br>
-                    <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
-                    <span class="vertrek">13:32</span><br>
-                    <span class="vertrek">14:05</span>
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
+                    <span class="station">&#10230; UT (ED)</span><br>
+                    <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>5b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>19</span></span><br>
+                    <span class="vertrek">13:47</span><br>
+                    <span class="vertrek">14:38</span>
                 </li>
                 
             </ul>
         </li>
         
-        <li style="padding: 10px 0 10px 0; border-bottom: 10px solid #ffc917;">
+    </ul>
+    <div style="text-align: right; margin-top: 10px; margin-bottom: 30px; padding-right: 15px;">
+        <a href="#top" style="font-size: 35px; color: #003399; font-weight: bold; text-decoration: none;">↑ Terug naar menu</a>
+    </div>
+    
+    <div id='UT-AH' class="etappe-header">UT - AH</div>
+    <ul>
+    
+        <li style="padding: 10px 0; border-bottom: 10px solid #ffc917;">
             <div style='color: red; font-size: 45px; font-weight: bold; margin-bottom: 5px;'>ALTERNATIVE_TRANSPORT</div>
             <ul>
         
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; KLP (ED)</span><br>
                     <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>19</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
                     <span class="vertrek">13:12<span style='color: red; font-weight: bold;'>1</span></span><br>
                     <span class="vertrek">13:33</span>
                 </li>
                 
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; AH (AH)</span><br>
                     <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
                     <span class="vertrek">13:42</span><br>
@@ -148,18 +142,18 @@
             </ul>
         </li>
         
-        <li style="padding: 10px 0 10px 0; border-bottom: 10px solid #ffc917;">
+        <li style="padding: 10px 0; border-bottom: 10px solid #ffc917;">
             <div style='color: red; font-size: 45px; font-weight: bold; margin-bottom: 5px;'>ALTERNATIVE_TRANSPORT</div>
             <ul>
         
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; KLP (ED)</span><br>
                     <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>19</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
                     <span class="vertrek">13:24<span style='color: red; font-weight: bold;'>1</span></span><br>
                     <span class="vertrek">13:45</span>
                 </li>
                 
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; AH (AH)</span><br>
                     <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
                     <span class="vertrek">13:52</span><br>
@@ -169,18 +163,18 @@
             </ul>
         </li>
         
-        <li style="padding: 10px 0 10px 0; border-bottom: 10px solid #ffc917;">
+        <li style="padding: 10px 0; border-bottom: 10px solid #ffc917;">
             <div style='color: red; font-size: 45px; font-weight: bold; margin-bottom: 5px;'>ALTERNATIVE_TRANSPORT</div>
             <ul>
         
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; KLP (ED)</span><br>
                     <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span style='color: red; font-weight: bold;'>15</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
                     <span class="vertrek">13:34<span style='color: red; font-weight: bold;'>2</span></span><br>
-                    <span class="vertrek">13:52<span style='color: red; font-weight: bold;'>2</span></span>
+                    <span class="vertrek">13:52<span style='color: red; font-weight: bold;'>1</span></span>
                 </li>
                 
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; AH (AH)</span><br>
                     <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
                     <span class="vertrek">14:02</span><br>
@@ -190,18 +184,18 @@
             </ul>
         </li>
         
-        <li style="padding: 10px 0 10px 0; border-bottom: 10px solid #ffc917;">
+        <li style="padding: 10px 0; border-bottom: 10px solid #ffc917;">
             <div style='color: red; font-size: 45px; font-weight: bold; margin-bottom: 5px;'>ALTERNATIVE_TRANSPORT</div>
             <ul>
         
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; KLP (ED)</span><br>
                     <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>19</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
                     <span class="vertrek">13:43<span style='color: red; font-weight: bold;'>1</span></span><br>
-                    <span class="vertrek">14:04</span>
+                    <span class="vertrek">14:04<span style='color: red; font-weight: bold;'>1</span></span>
                 </li>
                 
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; AH (AH)</span><br>
                     <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
                     <span class="vertrek">14:12</span><br>
@@ -211,31 +205,40 @@
             </ul>
         </li>
         
-    </ul>
-    
-    <div class="etappe-header">AH-DTCH</div>
-    <!-- BLAUWE LIJN: Scheidt de grote etappes van elkaar -->
-    <ul">
-    
-        <li style="padding: 10px 0 10px 0; border-bottom: 10px solid #ffc917;">
-            
+        <li style="padding: 10px 0; border-bottom: 10px solid #ffc917;">
+            <div style='color: red; font-size: 45px; font-weight: bold; margin-bottom: 5px;'>ALTERNATIVE_TRANSPORT</div>
             <ul>
         
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                    <span class="station">&#10230; DTCH (WW)</span><br>
-                    <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>6b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
-                    <span class="vertrek">13:05<span style='color: red; font-weight: bold;'>1</span></span><br>
-                    <span class="vertrek">13:33<span style='color: red; font-weight: bold;'>2</span></span>
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
+                    <span class="station">&#10230; KLP (ED)</span><br>
+                    <span class="spoor" style="color:black;">IC: </span><span class="spoor"><span class='spoor'>19</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>2</span></span><br>
+                    <span class="vertrek">13:54</span><br>
+                    <span class="vertrek">14:15</span>
+                </li>
+                
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
+                    <span class="station">&#10230; AH (AH)</span><br>
+                    <span class="spoor" style="color:black;">BUS: </span><span class="spoor"><span class='spoor'>?</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>?</span></span><br>
+                    <span class="vertrek">14:22</span><br>
+                    <span class="vertrek">14:55</span>
                 </li>
                 
             </ul>
         </li>
         
-        <li style="padding: 10px 0 10px 0; border-bottom: 10px solid #ffc917;">
+    </ul>
+    <div style="text-align: right; margin-top: 10px; margin-bottom: 30px; padding-right: 15px;">
+        <a href="#top" style="font-size: 35px; color: #003399; font-weight: bold; text-decoration: none;">↑ Terug naar menu</a>
+    </div>
+    
+    <div id='AH-DTCH' class="etappe-header">AH-DTCH</div>
+    <ul>
+    
+        <li style="padding: 10px 0; border-bottom: 10px solid #ffc917;">
             <div style='color: red; font-size: 45px; font-weight: bold; margin-bottom: 5px;'>CANCELLED</div>
             <ul>
         
-                <li style="background: #ffcccc; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: #ffcccc; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; DTCH (Doetinchem)</span><br>
                     <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>6b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
                     <span class="vertrek">13:20</span><br>
@@ -245,11 +248,11 @@
             </ul>
         </li>
         
-        <li style="padding: 10px 0 10px 0; border-bottom: 10px solid #ffc917;">
+        <li style="padding: 10px 0; border-bottom: 10px solid #ffc917;">
             
             <ul>
         
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; DTCH (WW)</span><br>
                     <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>6b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
                     <span class="vertrek">13:36<span style='color: red; font-weight: bold;'>1</span></span><br>
@@ -259,11 +262,11 @@
             </ul>
         </li>
         
-        <li style="padding: 10px 0 10px 0; border-bottom: 10px solid #ffc917;">
+        <li style="padding: 10px 0; border-bottom: 10px solid #ffc917;">
             
             <ul>
         
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; DTCH (Doetinchem)</span><br>
                     <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span style='color: red; font-weight: bold;'>6b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
                     <span class="vertrek">13:50</span><br>
@@ -273,11 +276,11 @@
             </ul>
         </li>
         
-        <li style="padding: 10px 0 10px 0; border-bottom: 10px solid #ffc917;">
+        <li style="padding: 10px 0; border-bottom: 10px solid #ffc917;">
             
             <ul>
         
-                <li style="background: #f4f4f4; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; DTCH (WW)</span><br>
                     <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>6b</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
                     <span class="vertrek">14:05</span><br>
@@ -287,7 +290,24 @@
             </ul>
         </li>
         
+        <li style="padding: 10px 0; border-bottom: 10px solid #ffc917;">
+            
+            <ul>
+        
+                <li style="background: #f4f4f4; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
+                    <span class="station">&#10230; DTCH (Doetinchem)</span><br>
+                    <span class="spoor" style="color:black;">ST: </span><span class="spoor"><span class='spoor'>11</span></span><span class="spoor" style="color:black;"> - </span><span class="spoor"><span class='spoor'>1</span></span><br>
+                    <span class="vertrek">14:20</span><br>
+                    <span class="vertrek">14:49</span>
+                </li>
+                
+            </ul>
+        </li>
+        
     </ul>
+    <div style="text-align: right; margin-top: 10px; margin-bottom: 30px; padding-right: 15px;">
+        <a href="#top" style="font-size: 35px; color: #003399; font-weight: bold; text-decoration: none;">↑ Terug naar menu</a>
+    </div>
     
 </body>
 </html>
