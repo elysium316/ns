@@ -22,73 +22,6 @@ etappes = [
     {"naam": "AH - DTCH", "van": "AH", "naar": "DTCH"}
 ]
 
-afkortingen = {
-    "Leiden Centraal": "LEDN",
-    "Utrecht Centraal": "UT",
-    "Arnhem Centraal": "AH",
-    "Doetinchem De Huet": "DTCH",
-    "Doetinchem": "DTC",
-    "Schiphol Airport": "SHL",
-    "Amersfoort Centraal": "AMF",
-    "Gouda": "GD",
-    "Doetinchem": "DTC",
-    "Amsterdam Centraal": "ASD",
-    "Rotterdam Centraal": "RTD",
-    "Den Haag Centraal": "GVC",
-    "Eindhoven Centraal": "EHV",
-    "Nijmegen": "NM",
-    "'s-Hertogenbosch": "HT",
-    "Zwolle": "ZL",
-    "Haarlem": "HLM",
-    "Breda": "BD",
-    "Almere Centrum": "ALM",
-    "Alphen a/d Rijn": "APN",
-    "Amsterdam Bijlmer ArenA": "ASB",
-    "Amsterdam Sloterdijk": "ASS",
-    "Amsterdam Zuid": "ASDZ",
-    "Apeldoorn": "APD",
-    "Delft": "DT",
-    "Den Haag HS": "GV",
-    "Den Haag Laan van NOI": "LAO",
-    "Deventer": "DV",
-    "Dordrecht": "DDR",
-    "Ede-Wageningen": "ED",
-    "Hoofddorp": "HFD",
-    "Hilversum": "HVS",
-}
-
-    "Hoorn": "HN",
-    "Kampen": "KPN",
-    "Leeuwarden": "LW",
-    "Lelystad Centrum": "LLS",
-    "Maastricht": "MT",
-    "Meppel": "MP",
-    "Middelburg": "MDB",
-    "Naarden-Bussum": "NDB",
-    "Oss": "O",
-    "Roermond": "RM",
-    "Roosendaal": "RSD",
-    "Rotterdam Alexander": "RTA",
-    "Rotterdam Blaak": "RTB",
-    "Schiedam Centrum": "SDM",
-    "Sittard": "STD",
-    "Sneek": "SK",
-    "Tiel": "TI",
-    "Tilburg": "TB",
-    "Utrecht Overvecht": "UTO",
-    "Veenendaal Centrum": "VND",
-    "Venlo": "VL",
-    "Vlissingen": "VS",
-    "Weert": "WT",
-    "Zaandam": "ZD",
-    "Zandvoort aan Zee": "ZVT",
-    "Zoetermeer": "ZTM",
-    "Zutphen": "ZP",
-
-    # --- Regionale stations (zoals in je eigen lijst) ---
-
-    "Doetinchem De Huet": "DTCH"
-
 alle_data_bakjes = []
 
 for etappe in etappes:
@@ -205,9 +138,8 @@ for bakje in alle_data_bakjes:
                 else:
                     a_spoor_tekst = f"<span class='spoor'>{a_actueel_spoor}</span>"
 
-                a_station_lang = leg['destination']['name']
-                a_station = afkortingen.get(a_station_lang, a_station_lang)
-            
+                v_station = leg['destionation'].get('stationCode', leg['destionation']['name'])
+                
                 a_gepland_str = leg['destination']['plannedDateTime']
                 a_actueel_str = leg['destination'].get('actualDateTime', a_gepland_str)
                 a_gepland_tijd = a_gepland_str[11:16]
