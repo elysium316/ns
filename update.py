@@ -58,7 +58,7 @@ html_content = f"""
         .vertrek {{ font-weight: bold; font-size: 72px; }}
         .spoor {{ color: blue; font-weight: bold; font-size: 50px; }}
         .station {{ color: black; font-size: 30pt; font-weight: bold; }}
-        .etappe-header {{ background: #ffc917; color: #003399; padding: 10px; font-size: 50px; font-weight: bold; margin: 30px 0 15px 0; border: 8px solid #003399; border-radius: 5px; }}
+        .etappe-header {{ background: #ffc917; color: #003399; padding: 0; font-size: 50px; font-weight: bold; margin: 5px 0 5px 0; border: 8px solid #003399; border-radius: 5px; }}
     </style>
 </head>
 <body>
@@ -88,7 +88,7 @@ for bakje in alle_data_bakjes:
         
         # GELE LIJN: Scheidt de reisopties van elkaar
         html_content += f"""
-        <li style="padding: 0 10px 0 10px; border-bottom: 10px solid #ffc917;">
+        <li style="padding: 10px 0 10px 0; border-bottom: 10px solid #ffc917;">
             {status_html}
             <ul>
         """
