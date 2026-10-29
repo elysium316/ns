@@ -53,7 +53,7 @@ html_content = f"""
     <style>
         body {{ white-space: nowrap;font-family: sans-serif; background: #fff; color: #000; margin:0; padding:0; }}
         h1 {{ font-size: 45px; margin: 0; color: #003399; }}
-        .tijd {{ font-size: 60px; font-weight:bold; color: black; margin-bottom: 15px; }}
+        .tijd {{ font-size: 60px; font-weight:bold; color: black; margin-bottom: 5px; }}
         ul {{ list-style-type: none; padding: 1; margin:0; }}
         .vertrek {{ font-weight: bold; font-size: 72px; }}
         .spoor {{ color: blue; font-weight: bold; font-size: 50px; }}
@@ -62,7 +62,7 @@ html_content = f"""
     </style>
 </head>
 <body>
-    <h1>Test 1</h1>
+    <h1>Test 2</h1>
     <div class="tijd">{tijd_vis}</div>
 """
 
