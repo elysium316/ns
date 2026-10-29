@@ -51,33 +51,52 @@ html_content = f"""
     <title>Route: LEDN - DTCH</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body {{ white-space: nowrap;font-family: sans-serif; background: #fff; color: #000; margin:0; padding:0; }}
-        h1 {{ font-size: 45px; margin: 0; color: #003399; }}
-        .tijd {{ font-size: 60px; font-weight:bold; color: black; margin-bottom: 5px; }}
-        ul {{ list-style-type: none; padding: 1px; margin:0; }}
+        body {{ white-space: nowrap; font-family: sans-serif; background: #fff; color: #000; margin: 0; padding: 0; }}
+        h1 {{ font-size: 45px; margin: 0; color: #003399; padding-left: 2pt; }}
+        .tijd {{ font-size: 60px; font-weight: bold; color: black; margin-bottom: 5px; padding-left: 2pt; }}
+        ul {{ list-style-type: none; padding: 0; margin: 0; }}
         .vertrek {{ font-weight: bold; font-size: 72px; }}
         .spoor {{ color: blue; font-weight: bold; font-size: 50px; }}
         .station {{ color: black; font-size: 30pt; font-weight: bold; }}
-        .etappe-header {{ background: #ffc917; color: #003399; padding: 0; font-size: 50px; font-weight: bold; margin: 5px 0 5px 0; border: 8px solid #003399; border-radius: 5px; }}
+        .etappe-header {{ background: #ffc917; color: #003399; padding: 10px; font-size: 50px; font-weight: bold; margin: 20px 2pt 5px 2pt; border: 8px solid #003399; border-radius: 5px; }}
+        
+        .menu-link {{
+            display: inline-block;
+            background: #003399;
+            color: white;
+            padding: 15px 20px;
+            margin: 5px 5px 15px 5px;
+            text-decoration: none;
+            font-size: 40px;
+            font-weight: bold;
+            border-radius: 10px;
+        }}
     </style>
 </head>
-<body>
-    <h1>Test 5</h1>
+<body id="top">
+    <h1>Test 6</h1>
     <div class="tijd">{tijd_vis}</div>
+    <div style='padding: 2pt; margin-bottom: 20px;'>
 """
 
 for bakje in alle_data_bakjes:
+    etappe_naam_id = bakje["etappe_naam"].replace(" ", "")
+    html_content += f"<a href='#{etappe_naam_id}' class='menu-link'>{bakje['etappe_naam']}</a> "
+
+html_content += "</div>\n"
+
+for bakje in alle_data_bakjes:
     etappe_naam = bakje["etappe_naam"]
+    etappe_naam_id = etappe_naam.replace(" ", "")
     trips = bakje["trips"]
     
     html_content += f"""
-    <div class="etappe-header">{etappe_naam}</div>
-    <!-- BLAUWE LIJN: Scheidt de grote etappes van elkaar -->
-    <ul">
+    <div id='{etappe_naam_id}' class="etappe-header">{etappe_naam}</div>
+    <ul>
     """
-    # style="padding: 0; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 10px solid #003399;
+    
     if not trips:
-        html_content += "<li style='font-size: 40px; color: red; font-weight: bold;'>Geen reizen gevonden voor dit traject.</li>"
+        html_content += "<li style='font-size: 40px; color: red; font-weight: bold; padding: 10px;'>Geen reizen gevonden voor dit traject.</li>"
     
     for trip in trips[:5]: 
         status = trip.get('status', 'ONBEKEND')
@@ -88,11 +107,10 @@ for bakje in alle_data_bakjes:
         
         # GELE LIJN: Scheidt de reisopties van elkaar
         html_content += f"""
-        <li style="padding: 10px 0 10px 0; border-bottom: 10px solid #ffc917;">
+        <li style="padding: 10px 0; border-bottom: 10px solid #ffc917;">
             {status_html}
             <ul>
         """
-        #  style="list-style-type: none; padding: 0; margin: 0;"
         
         for leg in trip.get('legs', []):
             if leg.get('travelType') == 'PUBLIC_TRANSIT':
@@ -171,15 +189,15 @@ for bakje in alle_data_bakjes:
                     "Drodrecht": "DD",
                     "Leeuwarden": "LW"
                 }
-                    # Haal de eindbestemming op uit de API
+                
+                # Haal de eindbestemming op uit de API
                 richting_voluit = leg.get('direction', 'Onbekend')
                 
                 # Check of we hier een afkorting voor hebben in ons lijstje
                 richting = richting_afkortingen.get(richting_voluit, richting_voluit)
                 
-                # Geen dikke lijnen meer, gewoon rustige grijze balkjes
                 html_content += f"""
-                <li style="background: {bg_color}; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
+                <li style="background: {bg_color}; padding: 5px 2px; margin: 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                     <span class="station">&#10230; {a_station} ({richting})</span><br>
                     <span class="spoor" style="color:black;">{vervoer}: </span><span class="spoor">{spoor_tekst}</span><span class="spoor" style="color:black;"> - </span><span class="spoor">{a_spoor_tekst}</span><br>
                     <span class="vertrek">{v_tijd}</span><br>
@@ -194,6 +212,9 @@ for bakje in alle_data_bakjes:
         
     html_content += """
     </ul>
+    <div style="text-align: right; margin-top: 10px; margin-bottom: 30px; padding-right: 15px;">
+        <a href="#top" style="font-size: 35px; color: #003399; font-weight: bold; text-decoration: none;">↑ Terug naar menu</a>
+    </div>
     """
 
 html_content += """
