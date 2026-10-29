@@ -33,8 +33,7 @@ jobs:
         run: |
           # Draai eerst het ene script, dan direct het andere.
           # Als update.py bijvoorbeeld 1.5 seconde duurt, begint update2.py direct daarna.
-          python update.py
-          python update2.py
+          python update3.py
 
       - name: Sla de HTML paginas op in de repository
         run: |
@@ -42,9 +41,8 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Voeg BEIDE HTML-bestanden toe. 
-          # Verander 'info2.html' naar de naam die je in update2.py hebt ingesteld.
-          git add ld.html dl.html
+          # Voeg direct ALLE .html bestanden toe die het script zojuist heeft gemaakt
+          git add *.html
           
           # Maak de commit (als er niets veranderd is, geeft exit 0 door ipv een error)
           git commit -m "Automatische update treintijden" || exit 0
