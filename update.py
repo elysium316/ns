@@ -29,8 +29,65 @@ afkortingen = {
     "Doetinchem De Huet": "DTCH",
     "Doetinchem": "DTC",
     "Schiphol Airport": "SHL",
-    "Amersfoort Centraal": "AMF"
+    "Amersfoort Centraal": "AMF",
+    "Gouda": "GD",
+    "Doetinchem": "DTC",
+    "Amsterdam Centraal": "ASD",
+    "Rotterdam Centraal": "RTD",
+    "Den Haag Centraal": "GVC",
+    "Eindhoven Centraal": "EHV",
+    "Nijmegen": "NM",
+    "'s-Hertogenbosch": "HT",
+    "Zwolle": "ZL",
+    "Haarlem": "HLM",
+    "Breda": "BD",
+    "Almere Centrum": "ALM",
+    "Alphen a/d Rijn": "APN",
+    "Amsterdam Bijlmer ArenA": "ASB",
+    "Amsterdam Sloterdijk": "ASS",
+    "Amsterdam Zuid": "ASDZ",
+    "Apeldoorn": "APD",
+    "Delft": "DT",
+    "Den Haag HS": "GV",
+    "Den Haag Laan van NOI": "LAO",
+    "Deventer": "DV",
+    "Dordrecht": "DDR",
+    "Ede-Wageningen": "ED",
+    "Hoofddorp": "HFD",
+    "Hilversum": "HVS",
 }
+
+    "Hoorn": "HN",
+    "Kampen": "KPN",
+    "Leeuwarden": "LW",
+    "Lelystad Centrum": "LLS",
+    "Maastricht": "MT",
+    "Meppel": "MP",
+    "Middelburg": "MDB",
+    "Naarden-Bussum": "NDB",
+    "Oss": "O",
+    "Roermond": "RM",
+    "Roosendaal": "RSD",
+    "Rotterdam Alexander": "RTA",
+    "Rotterdam Blaak": "RTB",
+    "Schiedam Centrum": "SDM",
+    "Sittard": "STD",
+    "Sneek": "SK",
+    "Tiel": "TI",
+    "Tilburg": "TB",
+    "Utrecht Overvecht": "UTO",
+    "Veenendaal Centrum": "VND",
+    "Venlo": "VL",
+    "Vlissingen": "VS",
+    "Weert": "WT",
+    "Zaandam": "ZD",
+    "Zandvoort aan Zee": "ZVT",
+    "Zoetermeer": "ZTM",
+    "Zutphen": "ZP",
+
+    # --- Regionale stations (zoals in je eigen lijst) ---
+
+    "Doetinchem De Huet": "DTCH"
 
 alle_data_bakjes = []
 
@@ -61,7 +118,7 @@ html_content = f"""
     <title>Route: LEDN - DTCH</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body {{ font-family: sans-serif; background: #fff; color: #000; margin:2pt; padding:2pt; }}
+        body {{ white-space: nowrap;font-family: sans-serif; background: #fff; color: #000; margin:2pt; padding:2pt; }}
         h1 {{ font-size: 45px; margin: 0; color: #003399; }}
         .tijd {{ font-size: 60px; font-weight:bold; color: black; margin-bottom: 15px; }}
         ul {{ list-style-type: none; padding: 0; margin: 0; }}
@@ -117,8 +174,7 @@ for bakje in alle_data_bakjes:
                 else:
                     bg_color = "#f4f4f4" 
                     
-                v_station_lang = leg['origin']['name']
-                v_station = afkortingen.get(v_station_lang, v_station_lang)
+                v_station = leg['origin'].get('stationCode', leg['origin']['name'])
                 
                 v_gepland_spoor = leg['origin'].get('plannedTrack', '?')
                 v_actueel_spoor = leg['origin'].get('actualTrack', v_gepland_spoor)
@@ -136,7 +192,7 @@ for bakje in alle_data_bakjes:
                     at = datetime.strptime(v_actueel_str[:19], "%Y-%m-%dT%H:%M:%S")
                     delay_min = int((at - pt).total_seconds() / 60)
                     if delay_min > 0:
-                        v_tijd = f"{v_gepland_tijd}<span style='color: red; font-weight: bold;'>+{delay_min}</span>"
+                        v_tijd = f"{v_gepland_tijd}<span style='color: red; font-weight: bold;'>{delay_min}</span>"
                     else:
                         v_tijd = v_gepland_tijd
                 else:
