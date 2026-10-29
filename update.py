@@ -17,9 +17,9 @@ tijd_zoeken = (tijd_nu - timedelta(minutes=30)).isoformat(timespec='seconds')
 # 1. DE 3 TRAJECTEN DEFINIËREN & OPHALEN
 # ---------------------------------------------------------
 etappes = [
-    {"naam": "LEDN - UT", "van": "LEDN", "naar": "UT"},
+    {"naam": "LEDN-UT", "van": "LEDN", "naar": "UT"},
     {"naam": "UT - AH", "van": "UT", "naar": "AH"},
-    {"naam": "AH - DTCH", "van": "AH", "naar": "DTCH"}
+    {"naam": "AH-DTCH", "van": "AH", "naar": "DTCH"}
 ]
 
 alle_data_bakjes = []
@@ -54,7 +54,7 @@ html_content = f"""
         body {{ white-space: nowrap;font-family: sans-serif; background: #fff; color: #000; margin:0; padding:0; }}
         h1 {{ font-size: 45px; margin: 0; color: #003399; }}
         .tijd {{ font-size: 60px; font-weight:bold; color: black; margin-bottom: 5px; }}
-        ul {{ list-style-type: none; padding: 1; margin:0; }}
+        ul {{ list-style-type: none; padding: 1px; margin:0; }}
         .vertrek {{ font-weight: bold; font-size: 72px; }}
         .spoor {{ color: blue; font-weight: bold; font-size: 50px; }}
         .station {{ color: black; font-size: 30pt; font-weight: bold; }}
@@ -62,7 +62,7 @@ html_content = f"""
     </style>
 </head>
 <body>
-    <h1>Test 2</h1>
+    <h1>Test 3</h1>
     <div class="tijd">{tijd_vis}</div>
 """
 
@@ -155,11 +155,13 @@ for bakje in alle_data_bakjes:
                         a_tijd = a_gepland_tijd
                 else:
                     a_tijd = a_gepland_tijd
+
+                richting = leg.get('direction', 'Onbekend')
                 
                 # Geen dikke lijnen meer, gewoon rustige grijze balkjes
                 html_content += f"""
-                <li style="background: {bg_color}; padding: 10px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: none; border-right: none;">
-                    <span class="station">&#10230; {a_station}</span><br>
+                <li style="background: {bg_color}; padding: 2px; margin-bottom: 5px; border-top: 1px solid #ddd; border-bottom: 3px solid #ddd; border-left: none; border-right: none;">
+                    <span class="station">&#10230; {a_station} ({richting})</span><br>
                     <span class="spoor" style="color:black;">{vervoer}: </span><span class="spoor">{spoor_tekst}</span><span class="spoor" style="color:black;"> - </span><span class="spoor">{a_spoor_tekst}</span><br>
                     <span class="vertrek">{v_tijd}</span><br>
                     <span class="vertrek">{a_tijd}</span>
