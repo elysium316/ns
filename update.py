@@ -51,17 +51,18 @@ html_content = f"""
     <title>Route: LEDN - DTCH</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body {{ white-space: nowrap;font-family: sans-serif; background: #fff; color: #000; margin:2pt; padding:2pt; }}
+        body {{ white-space: nowrap;font-family: sans-serif; background: #fff; color: #000; margin:0; padding:0; }}
         h1 {{ font-size: 45px; margin: 0; color: #003399; }}
         .tijd {{ font-size: 60px; font-weight:bold; color: black; margin-bottom: 15px; }}
-        ul {{ list-style-type: none; padding: 0; margin: 0; }}
+        ul {{ list-style-type: none; padding: 2; margin: 2; }}
         .vertrek {{ font-weight: bold; font-size: 72px; }}
         .spoor {{ color: blue; font-weight: bold; font-size: 50px; }}
         .station {{ color: black; font-size: 33pt; font-weight: bold; }}
-        .etappe-header {{ background: #ffc917; color: #003399; padding: 10px; font-size: 50px; font-weight: bold; margin-top: 30px; margin-bottom: 15px; border-radius: 5px; }}
+        .etappe-header {{ background: #ffc917; color: #003399; padding: 10px; font-size: 50px; font-weight: bold; margin: 30px 2pt 15px 2pt; border: 8px solid #003399; border-radius: 5px; }}
     </style>
 </head>
 <body>
+    <h1>Test 1</h1>
     <div class="tijd">{tijd_vis}</div>
 """
 
@@ -89,8 +90,9 @@ for bakje in alle_data_bakjes:
         html_content += f"""
         <li style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 4px solid #ffc917;">
             {status_html}
-            <ul style="list-style-type: none; padding: 0; margin: 0;">
+            <ul>
         """
+        #  style="list-style-type: none; padding: 0; margin: 0;"
         
         for leg in trip.get('legs', []):
             if leg.get('travelType') == 'PUBLIC_TRANSIT':
