@@ -14,7 +14,7 @@ tijd_vis = tijd_nu.strftime('%H:%M')
 tijd_zoeken = (tijd_nu - timedelta(minutes=30)).isoformat(timespec='seconds') 
 
 # --------------------------------------------------------- 
-# 1. DE 3 TRAJECTEN DEFINIËREN (inclusief bestandsnamen)
+# 1. DE 3 TRAJECTEN DEFINIËREN
 # --------------------------------------------------------- 
 etappes = [ 
     {"naam": "LEDN-UT", "van": "LEDN", "naar": "UT", "bestand": "ledn_ut.html"}, 
@@ -23,7 +23,53 @@ etappes = [
 ] 
 
 # --------------------------------------------------------- 
-# 2. DATA OPHALEN & PER TRAJECT EEN PAGINA MAKEN
+# 2. HOOFDPAGINA (index.html) BOUWEN
+# --------------------------------------------------------- 
+index_html = f"""
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Traject Keuzemenu</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <style> 
+        body {{ font-family: sans-serif; background: #fff; color: #000; margin:0; padding: 20px; text-align: center; }} 
+        h1 {{ font-size: 60px; margin-top: 50px; margin-bottom: 50px; color: #003399; }} 
+        .hoofd-knop {{ 
+            display: block; 
+            background: #003399; 
+            color: white; 
+            padding: 40px 20px; 
+            margin: 0 auto 30px auto; 
+            width: 90%; 
+            max-width: 600px; 
+            text-decoration: none; 
+            font-size: 50px; 
+            font-weight: bold; 
+            border-radius: 15px; 
+            border: 5px solid #003399;
+        }}
+    </style> 
+</head> 
+<body> 
+    <h1>Kies je traject</h1> 
+"""
+
+for etappe in etappes:
+    index_html += f"<a href='{etappe['bestand']}' class='hoofd-knop'>{etappe['naam']}</a>\n"
+
+index_html += """
+</body> 
+</html>
+"""
+
+# Sla de hoofdpagina op
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(index_html)
+print("Hoofdpagina gegenereerd: index.html")
+
+
+# --------------------------------------------------------- 
+# 3. DATA OPHALEN & SUBPAGINA'S MAKEN
 # --------------------------------------------------------- 
 for huidige_etappe in etappes:
     # --- Data ophalen voor dit specifieke traject ---
@@ -42,10 +88,12 @@ for huidige_etappe in etappes:
         data = response.json() 
         trips = data.get('trips', [])
 
-    # --- Menu bouwen (hyperlinks naar de andere pagina's) ---
+    # --- Menu bouwen voor de subpagina (inclusief Home knop) ---
     menu_html = "<div style='padding: 2pt; margin-bottom: 20px;'>"
+    # De Home knop
+    menu_html += "<a href='index.html' class='menu-link' style='background: #ddd; color: black; border-color: #ddd;'>🏠 Home</a> "
+    
     for menu_item in etappes:
-        # Geef de huidige pagina een gele kleur, de rest blauw
         if menu_item["naam"] == huidige_etappe["naam"]:
             menu_html += f"<a href='{menu_item['bestand']}' class='menu-link' style='background: #ffc917; color: #003399;'>{menu_item['naam']}</a> "
         else:
@@ -90,7 +138,6 @@ for huidige_etappe in etappes:
         else: 
             status_html = f"<div style='color: red; font-size: 45px; font-weight: bold; margin-bottom: 5px;'>{status}</div>" 
         
-        # GELE LIJN: Scheidt de reisopties van elkaar 
         html_content += f""" 
         <li style="padding: 10px 0; border-bottom: 10px solid #ffc917;"> 
             {status_html} 
@@ -194,9 +241,8 @@ for huidige_etappe in etappes:
 </html> 
 """ 
     
-    # 3. OPSLAAN ONDER DE NAAM VAN DE ETAPPE
+    # Sla de subpagina op
     bestandsnaam = huidige_etappe["bestand"]
     with open(bestandsnaam, "w", encoding="utf-8") as f: 
         f.write(html_content) 
-
-    print(f"Pagina gegenereerd: {bestandsnaam}")
+    print(f"Subpagina gegenereerd: {bestandsnaam}")
